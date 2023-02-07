@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id           Int      @id @default(autoincrement())
+  access_level Int      @default(1) @db.SmallInt
+  email        String   @unique @db.VarChar(255)
+  password     String   @db.VarChar(255)
+  fields       Json?
+  ts           DateTime @default(now()) @db.Timestamp(6)
+}
+
+model categories {
+  id           Int      @id @default(autoincrement())
+  parent_id    Int      @default(0)
+  url          String
+  name_uk      String   @unique @db.VarChar(255)
+  name_ru      String   @unique @db.VarChar(255)
+  image        String
+  position     Int      @default(0)
+  fields       Json?
+  ts           DateTime @default(now()) @db.Timestamp(6)
+  status       Int      @default(1) @db.SmallInt
+  filter_id    Int[]
+}
+
+model items {
+  id             Int       @id @default(autoincrement())
+  url            String?   @db.VarChar(255)
+  name_uk        String?   @unique @db.VarChar(255)
+  name_ru        String?   @unique @db.VarChar(255)
+  images         String[]
+  code_wholesale String    @db.VarChar(255)
+  code_vendor    String    @db.VarChar(255)
+  price_retail   Int?
+  remains        Int?      @default(0)
+  status         Int?      @default(2) @db.SmallInt
+  ts             DateTime  @default(now()) @db.Timestamp(6)
+  fields         Json?
+  category_id    Int       @default(0)
+  filters_id     Int[]
+  analogs        String[]
+  filters        filterInItems[]
+}
+
+model orders {
+  id           Int      @id @default(autoincrement())
+  items        Json
+  total        Int
+  user         Json
+  fields       Json?
+  ts           DateTime @default(now()) @db.Timestamp(6)
+}
+
+model filters {
+  id           Int       @id @default(autoincrement())
+  parent_id    Int       @default(0)
+  name_uk      String?   @unique @db.VarChar(255)
+  name_ru      String?   @unique @db.VarChar(255)
+  image        String
+  status       Int?      @default(2) @db.SmallInt
+  ts           DateTime  @default(now()) @db.Timestamp(6)
+  fields       Json?
+  items        filterInItems[]
+} 
+
+model filterInItems {
+  item       items    @relation(fields: [item_id], references: [id])
+  item_id    Int // relation scalar field (used in the `@relation` attribute above)
+  filters    filters  @relation(fields: [filter_id], references: [id])
+  filter_id  Int // relation scalar field (used in the `@relation` attribute above)
+  ts         DateTime @default(now()) @db.Timestamp(6)
+
+  @@id([item_id, filter_id])
+}

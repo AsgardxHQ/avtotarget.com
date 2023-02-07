@@ -1,0 +1,41 @@
+{
+  "all": "Всі",
+  "mainPage": "Головна",
+  "language": "українська",
+  "password": "Пароль",
+  "close": "Закрити",
+  "sign_in": "Авторизація",
+  "reg_in": "Регістрація",
+  "come_in": "Увійти",
+  "logout": "Вийти",
+  "search_pl": "Введіть для пошуку...",
+  "search_btn": "Пошук",
+  "new_supply": "Нові поставки",
+  "to_cart": "У кошик",
+  "cart": "Кошик",
+  "choise_parts": "Вузол",
+  "choise_cars": "Марка авто",
+  "choise_suppliers": "Виробник",
+  "choise_category": "Категорія",
+  "filter": "Пошук запчастин",
+  "count_items": "Кількість",
+  "cars": "Машини",
+  "parts": "Вузли",
+  "suppliers": "Виробники",
+  "order": "Замовити",
+  "pages": {
+    "about_us": "Про нас",
+    "delivery": "Доставка",
+    "contacts": "Контакти"
+  },
+  "items": {
+    "code_wholesale": "Код виробника",
+    "code_vendor": "Код товара",
+    "supplier": "Виробник",
+    "part": "Вузол",
+    "car": "Марка машини",
+    "price": "Ціна",
+    "total_item": "Сума",
+    "total": "Разом"
+  }
+}

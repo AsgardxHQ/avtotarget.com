@@ -1,0 +1,41 @@
+{
+  "all": "Все",
+  "mainPage": "Главная",
+  "language": "русский",
+  "password": "Пароль",
+  "close": "Закрыть",
+  "sign_in": "Авторизация",
+  "reg_in": "Регистрация",
+  "come_in": "Войти",
+  "logout": "Выйти",
+  "search_pl": "Введите для поиска...",
+  "search_btn": "Поиск",
+  "new_supply": "Новые поставки",
+  "to_cart": "В корзину",
+  "cart": "Корзина",
+  "choise_parts": "Узел",
+  "choise_cars": "Марка авто",
+  "choise_suppliers": "Производитель",
+  "choise_category": "Категория",
+  "filter": "Поиск запчастей",
+  "count_items": "Количество",
+  "cars": "Машины",
+  "parts": "Узлы",
+  "suppliers": "Производители",
+  "order": "Заказать",
+  "pages": {
+    "about_us": "О нас",
+    "delivery": "Доставка",
+    "contacts": "Контакты"
+  },
+  "items": {
+    "code_wholesale": "Код производителя",
+    "code_vendor": "Код товара",
+    "supplier": "Производителя",
+    "part": "Узел",
+    "car": "Марка машины",
+    "price": "Цена",
+    "total_item": "Сумма",
+    "total": "Итого"
+  }
+}
