@@ -1,0 +1,8 @@
+.nav-link {
+  @apply block;
+  @apply text-xs;
+  @apply pr-3;
+  @apply py-2;
+  @apply hover:bg-gray-100;
+  @apply pl-4;
+}

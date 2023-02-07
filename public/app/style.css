@@ -1,0 +1,16 @@
+.main-page .container {
+  min-width: 100%;
+}
+.main-page .container, .main-page .wrapper {
+  @apply flex;
+  @apply w-full;
+}
+.main-page .select-block {
+  @apply w-1/4;
+}
+.main-page .filter-btn {
+  @apply  w-1/6;
+}
+.product-page .filter-btn {
+  padding: 0 25px;
+}
