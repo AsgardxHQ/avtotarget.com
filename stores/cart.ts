@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import { getAllData } from './index';
 import type { Item } from '~~/types';
+
 let cart:Array<Object> = [];
 if(process.client) {
   const cartStorage:string|null = localStorage.getItem('cart');
@@ -35,6 +36,11 @@ export const cartStore = defineStore({
     setToStorage() {
       if(process.client) {
         localStorage.setItem('cart', JSON.stringify(this.cart));
+      }
+    },
+    initCart() {
+      if(process.client) {
+        this.cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
       }
     }
   }

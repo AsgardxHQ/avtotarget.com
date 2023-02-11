@@ -25,10 +25,10 @@
       <NuxtLink :to="`/${$route.params.locale}`" class="w-1/4 px-8">
         <img src="/images/logo-6.png" class="w-full">
       </NuxtLink>
-      <form class="md:w-2/4 sm:w-2/3 px-5">
+      <form class="md:w-2/4 sm:w-2/3 px-5" @submit.prevent="search()">
         <div class="flex w-full shadow-md">
-          <input type="text" name="search" class="w-full form-input px-4 py-3 rounded-l-md outline-0" :placeholder="$t('search_pl')">
-          <button class="w-20 px-4 py-3 bg-slate-600 text-gray-100 rounded-r-md outline-0 transition-all hover:bg-slate-400" type="submit">{{ $t('search_btn') }}</button>
+          <input type="text" name="search" v-model="searchText" class="w-full form-input px-4 py-3 rounded-l-md outline-0" :placeholder="$t('search_pl')">
+          <button type="submit" class="w-20 px-4 py-3 bg-slate-600 text-gray-100 rounded-r-md outline-0 transition-all hover:bg-slate-400">{{ $t('search_btn') }}</button>
         </div>
       </form>
       <div class="w-1/4 flex justify-end">
@@ -48,11 +48,21 @@
   import Cart from "@/components/app/cart.vue";
   import Auth from "@/components/app/auth.vue";
   import Cockpit from "@/components/cockpit/index.vue";
-  const { logout } = useAuth()
+  const { logout } = useAuth();
+  const route = useRoute();
+  const router = useRouter();
   const currentuser = useAuthUser();
   const isAdmin = useAdmin();
   const isOpen = ref(false);
   const showModal = ref(false);
+  const searchText = ref(route.params.request || '');
+
+  const search = async () => {
+    if((searchText.value as string).trim().length > 0) {
+      router.push(`/${route.params.locale}/search/${(searchText.value as string).trim().toLowerCase()}`);
+    }
+  }
+
   const openSignIn = () => {
     showModal.value = !showModal.value;
   }

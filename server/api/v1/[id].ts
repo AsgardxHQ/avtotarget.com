@@ -6,6 +6,7 @@ export default defineEventHandler(async (event) => {
   const item:any = await prisma.items.findUnique({
     where: {id: id},
   });
+  console.log(item.analogs);
   const category = await prisma.categories.findUnique({
     where: {
       id: item.category_id

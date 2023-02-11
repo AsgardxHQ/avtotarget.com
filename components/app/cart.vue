@@ -8,7 +8,7 @@
       <ul>
         <li v-for="item in cart" :key="item.id" class="flex items-center p-2 text-xs relative border-b">
           <NuxtLink class="w-1/4" :to="`/${$route.params.locale}/product/${item.id}`" :title="item[`name_${$route.params.locale}`]">
-            <img :src="item.images[0] || '/images/no_image.png'"/>
+            <img v-if="item.images && item.images.length > 0" :src="`/images/products/${item.images[0]}`">
           </NuxtLink>
           <div class="w-2/4 px-2">
             <NuxtLink :to="`/${$route.params.locale}/product/${item.id}`" :title="item[`name_${$route.params.locale}`]">
@@ -28,7 +28,7 @@ import { cartStore } from '@/stores/cart';
 const storeCart = cartStore();
 const cart:any = computed(() => {
   return storeCart.cart;
-})
+});
 const removeItem = (id:number) => {
   storeCart.delete(id);
 }

@@ -10,7 +10,10 @@
   "logout": "Выйти",
   "search_pl": "Введите для поиска...",
   "search_btn": "Поиск",
+  "search_hl": "Поиск запчастей",
+  "found": "найдено",
   "new_supply": "Новые поставки",
+  "search": "Найти",
   "to_cart": "В корзину",
   "cart": "Корзина",
   "choise_parts": "Узел",
@@ -23,6 +26,7 @@
   "parts": "Узлы",
   "suppliers": "Производители",
   "order": "Заказать",
+  "show_more": "Показать еще",
   "pages": {
     "about_us": "О нас",
     "delivery": "Доставка",

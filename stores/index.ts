@@ -44,8 +44,13 @@ export const getAllData = defineStore({
       return data.value;
     },
     async getItem(id) {
-      const data = await $fetch(`/api/v1/${id}`, { method: 'GET'});
-      return data;
+      const {refresh, data } = await useAsyncData(
+        'cart',
+        () => $fetch(`/api/v1/${id}`, { method: 'GET'})
+      );
+      await refresh();
+      
+      return data.value;
     },
     async getCategories() {
       const { data } = await useFetch('/api/v1/categories');

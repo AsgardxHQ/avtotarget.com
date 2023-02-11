@@ -1,6 +1,9 @@
 .main-page .container {
   min-width: 100%;
 }
+.main-page {
+  @apply my-5;
+}
 .main-page .container, .main-page .wrapper {
   @apply flex;
   @apply w-full;

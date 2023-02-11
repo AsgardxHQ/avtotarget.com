@@ -10,7 +10,10 @@
   "logout": "Вийти",
   "search_pl": "Введіть для пошуку...",
   "search_btn": "Пошук",
+  "search_hl": "Пошук запчастин",
+  "found": "знайдено",
   "new_supply": "Нові поставки",
+  "search": "Знайти",
   "to_cart": "У кошик",
   "cart": "Кошик",
   "choise_parts": "Вузол",
@@ -23,6 +26,7 @@
   "parts": "Вузли",
   "suppliers": "Виробники",
   "order": "Замовити",
+  "show_more": "Показати ще",
   "pages": {
     "about_us": "Про нас",
     "delivery": "Доставка",

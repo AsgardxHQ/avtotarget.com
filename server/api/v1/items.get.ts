@@ -25,7 +25,14 @@ export default defineEventHandler(async (event) => {
     })
     where.category_id = { in: catIds };
   } else if(query.subcategory) {
-    where.category_id = { in: [+query.subcategory] };
+    const subcats = await prisma.categories.findMany({
+      where: {
+        parent_id: +query.subcategory
+      }
+    });
+    const arr = [];
+    subcats.map(m => arr.push(m.id));
+    where.category_id = { in: [...arr, +query.subcategory] };
   }
   
   const options:QueryPrisma = {

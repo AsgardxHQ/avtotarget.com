@@ -11,6 +11,8 @@
 import Top from "@/components/app/top.vue";
 import NuxtLoadingBar from "@/components/app/NuxtLoadingBar.vue";
 import Footer from "@/components/app/footer.vue";
+import { cartStore } from "@/stores/cart";
+
 export default {
   data() {
     return {}
@@ -31,6 +33,9 @@ export default {
     if(!this.$route.params.locale) {
       this.$router.replace('/uk');
     }
+  },
+  mounted() {
+    cartStore().initCart();
   }
 }
 </script>

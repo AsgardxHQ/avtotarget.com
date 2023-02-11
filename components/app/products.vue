@@ -13,9 +13,15 @@
       <div v-if="currentItems && currentItems.length > 0"
         class="w-full grid grid-flow-row-dense sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 mb-12">
         <Item :items="currentItems" />
+        <!-- <NuxtLink :to="{ params: { page: +route.params.page + 1 }, query: route.query }"
+          class="group m-2 relative"
+        >
+          <div class="transition ease-in-out group-hover:scale-110 group-hover:absolute group-hover:shadow-lg z-50 bg-zinc-100 rounded-md shadow-md h-full flex items-center justify-center w-full">
+            <span class="text-xl uppercase font-bold">{{ $t('show_more') }}</span>
+          </div>
+        </NuxtLink> -->
       </div>
-      {{ pagination }}
-      <NuxtLink :to="{ params: { page: +route.params.page + 1 }, query: route.query }">next page</NuxtLink>
+      <Pagination :pagination="pagination" />
     </div>
     <div v-if="isLoader" class="fixed inset-0 w-full h-full bg-slate-200/50 flex justify-center items-center">
       <span class="text-2xl text-slate-800">LOADING</span>
@@ -24,6 +30,7 @@
 </template>
 
 <script lang="ts" setup>
+  import Pagination from "@/components/app/pagination.vue";
   import filterComponent from "@/components/app/filter.vue";
   import Item from "@/components/app/item.vue";
   import { getAllData } from "@/stores/index";
@@ -31,15 +38,15 @@
   const currentItems = ref([]);
   const currentCategory = ref([]);
   const isLoader = ref(false);
+  const pagination = ref({
+    count: 0
+  });
   const getData = async () => {
     const {items, count} = await getAllData().getItems(route.params, route.query);
     currentItems.value = items;
     pagination.value.count = +count;
 
   }
-  const pagination = ref({
-    count: 0
-  });
   getData();
   watch(() => route.query, async (newQuery, oldQuery) => {
     getData()

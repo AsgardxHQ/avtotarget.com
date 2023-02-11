@@ -122,7 +122,7 @@ const uploadFile = async ($event) => {
         const doc = parser.parseFromString(readXml, "application/xml");
         const xmlCats:NodeListOf<HTMLElement> = doc.querySelectorAll('category');
         const xmlItems:NodeListOf<HTMLElement> = doc.querySelectorAll('offers offer');
-        const xmlSupp:NodeListOf<HTMLElement> = doc.querySelectorAll('cross');
+        const xmlSupp:NodeListOf<HTMLElement> = doc.querySelectorAll('vendor');
         const xmlMake:NodeListOf<HTMLElement> = doc.querySelectorAll('car'); //.getAttribute('brand');
         
         for(let i=0;i<xmlCats.length;i++) {
@@ -144,32 +144,23 @@ const uploadFile = async ($event) => {
   
         console.log('Parsed categories', data.categories);
         if(Object.keys(data.categories).length > 0) {
-          // await $fetch('/api/v1/import/categories', {method: 'POST', body: data.categories});
+          await $fetch('/api/v1/import/categories', {method: 'POST', body: data.categories});
           console.log('Created categories', Object.keys(data.categories).length);
         }
 
         console.log('Start parse suppliers', xmlSupp.length);
         for(let i=0;i<xmlSupp.length;i++) {
-          // if(!filterSupp.value.find(f => f.parent_id === 2 && f.name_uk === xmlSupp[i].getAttribute('brand'))) {
-            if(!data.suppliers[xmlSupp[i].getAttribute('brand')]) {
-              data.suppliers[xmlSupp[i].getAttribute('brand')] = {
-                parent_id: 2,
-                name_uk: xmlSupp[i].getAttribute('brand'),
-                name_ru: xmlSupp[i].getAttribute('brand'),
-                image: '',
-                status: 1,
-                fields: {
-                  articles: [xmlSupp[i].getAttribute('article')]
-                }
-              };
-            } else {
-              data.suppliers[xmlSupp[i].getAttribute('brand')].fields.articles.push(xmlSupp[i].getAttribute('article'));
-            }
-          // }
+          data.suppliers[xmlSupp[i].innerHTML] = {
+            parent_id: 2,
+            name_uk: xmlSupp[i].innerHTML,
+            name_ru: xmlSupp[i].innerHTML,
+            image: '',
+            status: 1,
+          };
         }
         console.log('Parsed suppliers', Object.keys(data.suppliers).length);
         if(Object.keys(data.suppliers).length > 0) {
-          // await $fetch('/api/v1/import/filters', {method: 'POST', body: {suppliers: data.suppliers}});
+          await $fetch('/api/v1/import/filters', {method: 'POST', body: {suppliers: data.suppliers}});
           console.log('Created suppliers', Object.keys(data.suppliers).length);
         }
   
@@ -204,7 +195,7 @@ const uploadFile = async ($event) => {
         }
         console.log('Parsed makes', Object.keys(data.make).length);
         if(Object.keys(data.make).length > 0) {
-          // await $fetch('/api/v1/import/filters', {method: 'POST', body: {cars: data.make}});
+          await $fetch('/api/v1/import/filters', {method: 'POST', body: {cars: data.make}});
           console.log('Created makes', Object.keys(data.make).length);
         }
   
@@ -212,13 +203,16 @@ const uploadFile = async ($event) => {
         console.log('Get all filters');
         const allFilters:any = await $fetch('/api/v1/filters');
         console.log('Start parse items');
-        for(let i=0;i<1;i++){
+        for(let i=0;i<xmlItems.length;i++){
           const paramsArr = [];
           let filters_id = [];
           const analogs = [];
+          const crosses = [];
           const xmlAnalogs = xmlItems[i].querySelectorAll('Analogs analog');
           const xmlParams = xmlItems[i].querySelectorAll('params param');
           const xmlFilters = xmlItems[i].querySelectorAll('crosses cross, applicability car');
+          const xmlCrosses = xmlItems[i].querySelectorAll('crosses cross');
+          let code_wholesale = '';
           let test = [];
           // const xmlFilters = 
           for(let i=0;i<xmlAnalogs.length;i++) {
@@ -229,6 +223,12 @@ const uploadFile = async ($event) => {
               key: xmlParams[i].getAttribute('name'),
               value: xmlParams[i].getAttribute('text')
             });
+            if(xmlParams[i].getAttribute('name') === 'Код товара') {
+              code_wholesale = xmlParams[i].getAttribute('text');
+            }
+          }
+          for(let i = 0;i<xmlCrosses.length;i++) {
+            crosses.push({[xmlCrosses[i].getAttribute('brand')]: xmlCrosses[i].getAttribute('articles')})
           }
           for(let i=0;i<xmlFilters.length;i++) {
             if(xmlFilters[i].getAttribute('brand')) {
@@ -248,8 +248,6 @@ const uploadFile = async ($event) => {
               filters_id.push(f.id);
             }
           });
-          console.log(xmlItems[i].querySelector('vendorCode').innerHTML.split('-')[0], filters_id, test);
-          return;
           const img = xmlItems[i].querySelector('picture').innerHTML.indexOf('/') !== -1 ? 
                       xmlItems[i].querySelector('picture').innerHTML.split('/') : 
                       [xmlItems[i].querySelector('picture').innerHTML];
@@ -258,7 +256,7 @@ const uploadFile = async ($event) => {
             name_ru: xmlItems[i].querySelector('name').innerHTML,
             url: '',
             images: [img[img.length-1]],
-            code_wholesale: '',
+            code_wholesale: code_wholesale,
             code_vendor: xmlItems[i].querySelector('vendorCode').innerHTML.split('-')[0],
             price_retail: Math.round(100 * parseFloat(xmlItems[i].querySelector('price').innerHTML)),
             remains: 9999,
@@ -276,10 +274,10 @@ const uploadFile = async ($event) => {
           });
         }
         console.log('Parsed items', data.items.length);
-        // if(data.items.length > 0) {
-        //   await $fetch('/api/v1/import/items', {method: 'POST', body: data.items});
-        //   console.log('Created items', data.items.length);
-        // }
+        if(data.items.length > 0) {
+          await $fetch('/api/v1/import/items', {method: 'POST', body: data.items});
+          console.log('Created items', data.items.length);
+        }
 
         console.log('Finished parse file - ', files[index].name);
         console.groupEnd();

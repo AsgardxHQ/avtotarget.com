@@ -46,6 +46,7 @@ model items {
   category_id    Int       @default(0)
   filters_id     Int[]
   analogs        String[]
+  crosses        Json?
   filters        filterInItems[]
 }
 

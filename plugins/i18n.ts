@@ -8,6 +8,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   return {
     provide: {
       t: (key: string) => {
+        if(!nuxtApp._route.params.locale) return null;
         if(key.indexOf('.') !== -1) {
           const [p1, p2] = key.split('.');
           return localStrings[nuxtApp._route.params.locale][p1][p2] || ''

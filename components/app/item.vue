@@ -18,8 +18,8 @@
         :to="`/${$route.params.locale}/product/${item.id}`"
         class="block mb-2"
       >
-        <img v-if="item.images && item.images.length > 0" :src="`/images/products/${item.images[0]}`">
-        <div v-else class="w-full h-32 bg-zinc-300 flex justify-center items-center text-slate-100">
+        <img class="w-full h-40 object-cover" v-if="item.images && item.images.length > 0" :src="`/images/products/${item.images[0]}`">
+        <div v-else class="w-full h-40 bg-zinc-300 flex justify-center items-center text-slate-100">
           <span>No image</span>
         </div>
       </NuxtLink>

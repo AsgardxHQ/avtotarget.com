@@ -1,5 +1,5 @@
 <template>
-<div class="my-5">
+<div>
   <div class="px-2 pt-3">
     <h3 class="text-2xl text-slate-600 border-b-2 border-zinc-700">{{ $t('filter') }}</h3>
   </div>
@@ -59,7 +59,7 @@
           <select class="w-full form-input px-4 py-3 outline-0" v-model="filterData.supplier">
           <option :value="null">Производитель</option>
           <template v-for="filter in filters" :key="filter.id">
-          <option v-if="filter.parent_id === 2 && filter[`name_${$route.params.locale}`].length > 0" :value="filter.id">{{ filter[`name_${$route.params.locale}`] }}</option>
+          <option v-if="filter.parent_id === 2 && filter[`name_${$route.params.locale}`]" :value="filter.id">{{ filter[`name_${$route.params.locale}`] }}</option>
           </template>
         </select>
         </label>
