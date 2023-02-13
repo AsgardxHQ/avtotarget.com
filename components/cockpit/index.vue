@@ -223,7 +223,7 @@ const uploadFile = async ($event) => {
               key: xmlParams[i].getAttribute('name'),
               value: xmlParams[i].getAttribute('text')
             });
-            if(xmlParams[i].getAttribute('name') === 'Код товара') {
+            if(xmlParams[i].getAttribute('name') === 'Код запчасти') {
               code_wholesale = xmlParams[i].getAttribute('text');
             }
           }
@@ -256,7 +256,7 @@ const uploadFile = async ($event) => {
             name_ru: xmlItems[i].querySelector('name').innerHTML,
             url: '',
             images: [img[img.length-1]],
-            code_wholesale: code_wholesale,
+            code_wholesale,
             code_vendor: xmlItems[i].querySelector('vendorCode').innerHTML.split('-')[0],
             price_retail: Math.round(100 * parseFloat(xmlItems[i].querySelector('price').innerHTML)),
             remains: 9999,
@@ -270,7 +270,8 @@ const uploadFile = async ($event) => {
             },
             category_id: +xmlItems[i].querySelector('categoryId').innerHTML,
             filters_id: filters_id,
-            analogs: analogs
+            analogs,
+            crosses
           });
         }
         console.log('Parsed items', data.items.length);
