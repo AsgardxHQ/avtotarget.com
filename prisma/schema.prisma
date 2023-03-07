@@ -53,8 +53,7 @@ model items {
 model orders {
   id           Int      @id @default(autoincrement())
   items        Json
-  total        Int
-  user         Json
+  user         Int
   fields       Json?
   ts           DateTime @default(now()) @db.Timestamp(6)
 }

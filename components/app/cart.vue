@@ -1,6 +1,9 @@
 <template>
   <div class="relative group">
-    <NuxtLink class="group-hover:bg-slate-200 rounded-md px-3 py-4 relative" :to="`/${$route.params.locale}/cart`" :title="$t('cart')">
+    <NuxtLink 
+      class="group-hover:bg-slate-200 rounded-md px-3 py-4 relative" 
+      :to="cart.length === 0 ? `/${$route.params.locale}` : `/${$route.params.locale}/cart`" :title="$t('cart')"
+    >
       <span class="rounded-full bg-slate-300/75 w-4 h-4 flex justify-center items-center absolute text-xs top-2 right-1">{{ cart.length }}</span>
       {{ $t('cart') }} <i class="pi pi-shopping-cart text-xl"></i>
     </NuxtLink>

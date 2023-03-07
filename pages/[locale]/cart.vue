@@ -60,10 +60,6 @@
                 <input class="w-full form-input px-4 py-3 outline-0 border border-slate-200" type="tel" name="phone" placeholder="Телефон" v-model="orderData.phone" required="true">
               </label>
               <label class="block mb-2">
-                <span class="text-xs mb-1 block">Город</span>
-                <input class="w-full form-input px-4 py-3 outline-0 border border-slate-200" type="text" name="city" placeholder="Город" v-model="orderData.city" required="true">
-              </label>
-              <label class="block mb-2">
                 <span class="text-xs mb-1 block">Способ доставки</span>
                 <select class="w-full form-input px-4 py-3 outline-0 border border-slate-200" name="delivery" v-model="orderData.delivery" required="true">
                   <option value="">Способ доставки</option>
@@ -71,10 +67,25 @@
                   <option value="новая почта">Новая почта</option>
                 </select>
               </label>
-              <label class="block mb-2" v-if="orderData.delivery === 'новая почта'">
-                <span class="text-xs mb-1 block">Отделение почты</span>
-                <input class="w-full form-input px-4 py-3 outline-0 border border-slate-200" type="text" name="post_office" placeholder="Отделение почты" v-model="orderData.post_office" required="true">
-              </label>
+              <template v-if="orderData.delivery === 'новая почта'">
+                <label class="block mb-2">
+                  <span class="text-xs mb-1 block">Город</span>
+                  <input @change="searchPostOfficesbyCity()" class="w-full form-input px-4 py-3 outline-0 border border-slate-200" type="text" name="city" placeholder="Город" v-model="orderData.city" required="true">
+                </label>
+                <label class="block mb-2 relative" v-if="orderData.city.length != 0">
+                  <span class="text-xs mb-1 block">Отделение почты</span>
+                  <input @input="isShowPostOffices = true;" class="w-full form-input px-4 py-3 outline-0 border border-slate-200" type="text" name="post_office" placeholder="Отделение почты" v-model="orderData.post_office" required="true">
+                  <ul 
+                    v-show="isShowPostOffices"
+                    v-if="postOffices.length > 0 && orderData.post_office.length > 0"
+                    class="max-h-40 overflow-auto absolute bg-white border border-slate-200"
+                  >
+                    <li v-for="(el, index) in filterPostOffices" :key="index" @click="choisePost(el[route.params.locale === 'uk' ? 'Description' : 'DescriptionRu'])" class="px-2 mb-2 text-xs hover:bg-slate-200">
+                      {{ el[route.params.locale === 'uk' ? 'Description' : 'DescriptionRu'] }}
+                    </li>
+                  </ul>
+                </label>
+              </template>
               <label class="block mb-2">
                 <span class="text-xs mb-1 block">Примечание к заказу</span>
                 <textarea class="w-full form-input px-4 py-3 outline-0 border border-slate-200" rows="4" v-model="orderData.description"></textarea>
@@ -94,6 +105,7 @@
 import { cartStore } from '~~/stores/cart';
 import type { Item } from '~~/types';
 const route = useRoute();
+const router = useRouter();
 const storeCart = cartStore();
 const cart:any = computed(() => {
   return storeCart.cart;
@@ -122,6 +134,37 @@ const getTotalPrice = ():string => {
   return parseFloat(sum.toString()).toFixed(2);
 }
 
+const postOffices = ref([]);
+const isShowPostOffices = ref(true);
+const searchPostOfficesbyCity = async () => {
+  console.log(orderData.value.post_office);
+  const { data }:any = await $fetch('https://api.novaposhta.ua/v2.0/json/', {
+    method: 'POST',
+    body: {
+      apiKey: '36546247000dc161cf93d55c035e8f1b',
+      modelName: 'Address',
+      calledMethod: 'getWarehouses',
+      methodProperties: {
+        CityName: orderData.value.city,
+      }
+    }
+  });
+  postOffices.value = data;
+}
+const filterPostOffices = computed(() => {
+  const p = orderData.value.post_office;
+  if(p.length === 0) {
+    return [];
+  } else {
+    return postOffices.value.filter(f => f[`Description${route.params.locale === 'uk' ? '': 'Ru'}`].indexOf(p.trim()) !== -1);
+  }
+});
+
+const choisePost = (text) => {
+  orderData.value.post_office = text;
+  isShowPostOffices.value = false;
+}
+
 const removeItem = (id:number) => {
   storeCart.delete(id);
 }
@@ -135,6 +178,19 @@ const closeModal = () => {
   modal.value = false;
 }
 const sendToOrder = async () => {
-  console.log(orderData);
+  try {
+    await $fetch('/api/v1/order', {method: 'POST', body: orderData.value});
+    localStorage.removeItem('cart');
+    storeCart.cart = [];
+    router.replace(`/${route.params.locale}`);
+  } catch(err) {
+    console.log(err);
+  }
 }
+
+onMounted(() => {
+  if(cart.value.length === 0) {
+    window.location.href = `/${route.params.locale}`;
+  }
+});
 </script>

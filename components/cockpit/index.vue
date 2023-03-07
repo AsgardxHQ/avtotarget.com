@@ -228,7 +228,7 @@ const uploadFile = async ($event) => {
             }
           }
           for(let i = 0;i<xmlCrosses.length;i++) {
-            crosses.push({[xmlCrosses[i].getAttribute('brand')]: xmlCrosses[i].getAttribute('articles')})
+            crosses.push({[xmlCrosses[i].getAttribute('brand')]: xmlCrosses[i].getAttribute('article')})
           }
           for(let i=0;i<xmlFilters.length;i++) {
             if(xmlFilters[i].getAttribute('brand')) {

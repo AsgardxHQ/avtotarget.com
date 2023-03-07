@@ -14,7 +14,8 @@
       rounded-md
       shadow-md
     ">
-      <NuxtLink 
+      <NuxtLink
+        :title="item[`name_${$route.params.locale}`]"
         :to="`/${$route.params.locale}/product/${item.id}`"
         class="block mb-2"
       >
@@ -24,6 +25,7 @@
         </div>
       </NuxtLink>
       <NuxtLink 
+        :title="item[`name_${$route.params.locale}`]"
         :to="`/${$route.params.locale}/product/${item.id}`"
         class="item-name block h-10 overflow-hidden text-sm text-slate-500 transition group-hover:text-slate-900 px-2 mb-2"
       >
@@ -32,6 +34,7 @@
       <div class="h-12">
         <ul class="text-xs px-2 mb-2">
           <li class="font-bold"><span class="font-normal">Код товара: </span>{{item.code_vendor}}</li>
+          <li class="font-bold"><span class="font-normal">Код про-ля: </span>{{item.code_wholesale}}</li>
         </ul>
       </div>
       <div class="flex items-center">

@@ -193,6 +193,7 @@ import Column from 'primevue/column';
 import Dropdown from 'primevue/dropdown';
 import FileUpload from 'primevue/fileupload';
 import MultiSelect from 'primevue/multiselect';
+
 import { uploadImg } from '@/helpers/upload-image';
 import { settings } from '@/stores/settings';
 const route = useRoute();
