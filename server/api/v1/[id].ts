@@ -2,11 +2,10 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 export default defineEventHandler(async (event) => {
-  const id = +event.context.params.id
+  const id = +event.context.params.id;
   const item:any = await prisma.items.findUnique({
     where: {id: id},
   });
-  console.log(item.analogs);
   const category = await prisma.categories.findUnique({
     where: {
       id: item.category_id

@@ -107,6 +107,8 @@ import type { Item } from '~~/types';
 const route = useRoute();
 const router = useRouter();
 const storeCart = cartStore();
+const currentuser = useAuthUser();
+
 const cart:any = computed(() => {
   return storeCart.cart;
 });
@@ -123,7 +125,16 @@ const orderData = ref({
   post_office: '',
   city: '',
   items: itemsId
-})
+});
+
+if(currentuser.value) {
+  for(let key in currentuser.value) {
+    if(Object.keys(orderData.value).indexOf(key) !== -1) {
+      orderData.value[key] = currentuser.value[key];
+    };
+  }
+}
+
 const modal = ref(false);
 const getTotalPrice = ():string => {
   let total = 0;
@@ -171,6 +182,7 @@ const removeItem = (id:number) => {
 
 const openModal = () => {
   document.body.classList.add('overflow-hidden');
+
   modal.value = true;
 }
 const closeModal = () => {

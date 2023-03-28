@@ -6,123 +6,47 @@ const prisma = new PrismaClient()
 export default defineEventHandler(async (event) => {
   const query = url.parse(event.req.url as string, true).query;
   let where:any = {};
-  let cats = null;
-  if(query.category && !query.subcategory) {
-    if(+query.category !== 0) {
-      cats = await prisma.categories.findMany({
-        where: {
-          parent_id: +query.category
-        },
-        select: {
-          id: true
+  let cats = [];
+  if(query.category) {
+    if(!where.AND) where.AND = [];
+    const categories = await prisma.categories.findMany({});
+    if(!query.subcategory) {
+      categories.map(cat => {
+        if(cat.id === +query.category) {
+          cats.push(cat.id);
+        } else if(cat.parent_id === +query.category) {
+          cats.push(cat.id);
+          categories.map(subCat => {
+            if(subCat.parent_id === cat.id) {
+              cats.push(subCat.id);
+            }
+          });
         }
-      })
+      });
+    } else {
+      categories.map(cat => {
+        if(cat.id === +query.subcategory || cat.parent_id === +query.subcategory) {
+          cats.push(cat.id);
+        }
+      });
     }
-    const categories = [{id: +query.category}, ...cats];
-    const catIds = [];
-    categories.map(m => {
-      catIds.push(m.id);
-    })
-    where.category_id = { in: catIds };
-  } else if(query.subcategory) {
-    const subcats = await prisma.categories.findMany({
-      where: {
-        parent_id: +query.subcategory
-      }
-    });
-    const arr = [];
-    subcats.map(m => arr.push(m.id));
-    where.category_id = { in: [...arr, +query.subcategory] };
+    where.AND.push({category_id: {in: cats}});
   }
-  
   const options:QueryPrisma = {
     orderBy: {ts: 'asc'},
   };
-  const { make, model, supplier } = query;
-  const arr:any = [];
-  let filters = [];
-  if(make && model) {
-    if(model) {
-      for(let key in query) {
-        if(!isNaN(+query[key]) && ['make', 'category', 'subcategory'].indexOf(key) === -1) arr.push(+query[key]);
+  if(Object.keys(query).length > 0) {
+    const filters = [];
+    for(let key in query) {
+      if(['category', 'subcategory', 'page', 'limit'].indexOf(key) === -1 && !isNaN(+query[key])) {
+        filters.push(+query[key]);
       }
-      filters = await prisma.filters.findMany({
-        where: {
-          id: {in: arr}
-        }
-      });
-    } else if(make) {
-      for(let key in query) {
-        if(!isNaN(+query[key]) && ['category', 'subcategory'].indexOf(key) === -1) arr.push(+query[key]);
-      }
-      filters.push(
-        ...await prisma.filters.findMany({
-          where: {
-            id: {in: arr}
-          },
-          select: {
-            id: true
-          }
-        })
-      );
-      filters.push(
-        ...await prisma.filters.findMany({
-          where: {
-            parent_id: +make
-          },
-          select: {
-            id: true
-          }
-        })
-      );
     }
     if(filters.length > 0) {
-      let convertFilter = [];
-      filters.map(f => {
-        convertFilter.push(+f.id)
-      });
-      const hasType = convertFilter.length > 2;
-      // hasSome - if we have only one attr
-      // hasEvery - if we have two or more attrs
-      where.filters_id = {[`${hasType ? 'hasSome' : 'hasEvery'}`]: convertFilter};
+      if(!where.AND) where.AND = [];
+      where.AND.push({filters_id: {hasEvery: filters}})
     }
   }
-  // const test = await prisma.items.findMany({
-  //   where: {
-  //     AND: [
-  //       {
-  //         category_id: +query.category
-  //       },
-  //       {
-  //         filters_id: {hasEvery: [+make, +supplier]}
-  //       }
-  //     ]
-  //   }
-  // });
-  // console.log(test);
-  // if(query.filter) {
-  //   const qf:any = query.filter.indexOf(',') !== -1 ? (query.filter as string).split(','): [query.filter]
-  //   let filterToNumber:number[] = qf.map(f => +f);
-  //   filterToNumber = filterToNumber.map(m => +m);
-  //   const filters = await prisma.filters.findMany({
-  //     where: {parent_id: {in: filterToNumber}},
-  //     select: {
-  //       id: true,
-  //       parent_id: true
-  //     }
-  //   })
-  //   let convertFilter = [];
-  //   filters.map(f => {
-  //     if(f.parent_id !== 0) {
-  //       convertFilter.push(+f.id)
-  //     }
-  //   });
-  //   convertFilter.push(...filterToNumber);
-  //   //hasSome - if we have only one attr
-  //   //hasEvery - if we have two or more attrs
-  //   const hasType = convertFilter.length > 2;
-  //   where.filters_id = {[`${hasType ? 'hasSome' : 'hasEvery'}`]: convertFilter};
-  // }
   options.where = where;
   if(query.limit) options.take = +query.limit;
   else options.take = 20;

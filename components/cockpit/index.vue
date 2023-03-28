@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed top-0 left-0 bg-white w-full h-full overflow-auto">
+  <div class="cockpit fixed top-0 left-0 bg-white w-full h-full overflow-auto">
     <a href="#" class="absolute right-2 top-2" @click.prevent="$emit('closeCockpit')"><i class="pi pi-times"></i></a>
     <div class="flex">
       <div class="w-64 border-r shadow-md">
@@ -55,6 +55,8 @@
         <CategoriesComponent :filters="filters" :categories="categories" :showComponent="showComponent" v-if="showComponent.url === 'categories'" />
         <FiltersComponent :filters="filters" :showComponent="showComponent" v-if="showComponent.url === 'filters'" />
         <Products  :showComponent="showComponent" :filters="filters" :categories="categories" v-if="showComponent.url === 'products'" />
+        <Users  :showComponent="showComponent" v-if="showComponent.url === 'users'" />
+        <Orders  :showComponent="showComponent" v-if="showComponent.url === 'orders'" />
       </div>
     </div>
   </div>
@@ -63,6 +65,8 @@
 import CategoriesComponent from "@/components/cockpit/categories.vue";
 import FiltersComponent from "@/components/cockpit/filters.vue";
 import Products from "@/components/cockpit/products.vue";
+import Orders from "@/components/cockpit/orders.vue";
+import Users from "@/components/cockpit/users.vue";
 // import { read, utils } from "xlsx";
 // import Suppliers from "@/components/cockpit/suppliers.vue";
 // import Parts from "@/components/cockpit/parts.vue";

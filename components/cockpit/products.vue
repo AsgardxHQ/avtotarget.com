@@ -1,11 +1,11 @@
 <template>
 <div>
   <div class="my-2 flex justify-between">
-    <span>Все товары (кол-во: {{items.length}})</span>
+    <span>Все товары (кол-во: {{count}})</span>
   </div>
   <DataTable
     :value="items"
-    :paginator="true"
+    :paginator="false"
     :rows="10"
     dataKey="id" 
     stripedRows
@@ -33,29 +33,6 @@
         <template v-else>
           <span class="text-red-600">Нет категории</span>
         </template>
-        <!-- <span
-          v-for="car in slotProps.data.cars"
-          :key="car.id"
-        >
-          <template v-if="car.name_uk === 'all'">
-            Все модели
-          </template>
-          <template v-else>
-            {{ car[`name_${route.params.locale}`] }}
-          </template>
-        </span> -->
-      </template>
-    </Column>
-    <Column field="filters_id" header="Атрибуты" :sortable="true">
-      <template #body="slotProps">
-        <div class="flex flex-col">
-          <span
-            class="bg-slate-400 rounded px-2 py-1 text-white mb-2"
-            v-for="f in slotProps.data.filters"
-          >
-            {{f[`name_${route.params.locale}`]}}
-          </span>
-        </div>
       </template>
     </Column>
     <Column field="status" header="Статус" :sortable="true"></Column>
@@ -184,16 +161,17 @@
       </div>
     </template>
   </DataTable>
+  <Pagination :pagination="{count}" @changePage="changePage"></Pagination>
 </div>
 </template>
 
 <script lang="ts" setup>
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
-import Dropdown from 'primevue/dropdown';
+// import Dropdown from 'primevue/dropdown';
 import FileUpload from 'primevue/fileupload';
 import MultiSelect from 'primevue/multiselect';
-
+import Pagination from '@/components/cockpit/pagination.vue';
 import { uploadImg } from '@/helpers/upload-image';
 import { settings } from '@/stores/settings';
 const route = useRoute();
@@ -255,8 +233,8 @@ const save = (payload:any) => {
     console.log(err);
   })
 }
-const getData = async () => {
-  const data:any = await $fetch('/api/v1/items?limit=20');
+const getData = async (page=1) => {
+  const data:any = await $fetch(`/api/v1/items?limit=20&page=${page}`);
   data.items.map((item:any) => {
     item.formatedPrice = item.price_retail / 100;
     item.category = categories.find((cat:any) => cat.id === item.category_id);
@@ -266,6 +244,9 @@ const getData = async () => {
   count.value = data.count;
 }
 
+const changePage = (page:number) => {
+  getData(page);
+}
 
 onMounted(() => {
   getData()

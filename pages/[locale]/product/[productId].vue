@@ -35,6 +35,9 @@
   </div>
   <div class="w-full px-5 mt-8" v-html="renderItem.fields[`description_${route.params.locale}`]">
   </div>
+  <div ref="cartNotice" class="cart-notice">
+    <span>Товар добавлен в корзину!</span>
+  </div>
 </div>
 </template>
 
@@ -42,6 +45,7 @@
 import { cartStore } from '@/stores/cart';
 const route = useRoute();
 const count = ref(1);
+const cartNotice = ref(null);
 const renderItem:any = ref({});
 onUnmounted(() => {
   delete useNuxtApp().payload.data['item']
@@ -62,6 +66,10 @@ const addToCart = (id:number) => {
     cartStore().set(id, +count.value);
   }
   count.value = 1;
+  cartNotice.value.style.opacity = 1;
+  setTimeout(() => {
+    cartNotice.value.style.opacity = 0;
+  }, 2000);
   return;
 }
 </script>

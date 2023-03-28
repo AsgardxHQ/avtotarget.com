@@ -19,7 +19,7 @@
         :to="`/${$route.params.locale}/product/${item.id}`"
         class="block mb-2"
       >
-        <img class="w-full h-40 object-cover" v-if="item.images && item.images.length > 0" :src="`/images/products/${item.images[0]}`">
+        <img class="w-full h-40 object-cover" v-if="item.images && item.images.length > 0" :src="useAsset(item.images[0])">
         <div v-else class="w-full h-40 bg-zinc-300 flex justify-center items-center text-slate-100">
           <span>No image</span>
         </div>
@@ -49,6 +49,9 @@
       </div>
     </div>
   </div>
+  <div ref="cartNotice" class="cart-notice">
+    <span>Товар добавлен в корзину!</span>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -56,8 +59,28 @@ import { cartStore } from '@/stores/cart';
 const { items } = defineProps({
   items: Array<any>,
 });
+const cartNotice = ref(null);
 const addToCart = (id:number) => {
   cartStore().set(id, 1);
+  cartNotice.value.style.opacity = 1;
+  setTimeout(() => {
+    cartNotice.value.style.opacity = 0;
+  }, 2000);
   return;
 }
+const getImage = (img:string) => {
+  console.log(new URL(img, '').href);
+  // return new URL(img, import.meta.url).href;
+}
+
+function useAsset(path: string): string {
+  const assets = import.meta.glob('~/assets/**/*', {
+    eager: true,
+    import: 'default',
+  })
+  // @ts-expect-error: wrong type info
+  return assets['/assets/products/' + path]
+}
+
+// console.log(useAsset(`010302.jpeg`));
 </script>

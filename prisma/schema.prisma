@@ -56,6 +56,7 @@ model orders {
   user         Int
   fields       Json?
   ts           DateTime @default(now()) @db.Timestamp(6)
+  status       Int @default(3)
 }
 
 model filters {

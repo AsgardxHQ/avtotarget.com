@@ -6,3 +6,9 @@
   @apply hover:bg-gray-100;
   @apply pl-4;
 }
+.p-component {
+  @apply text-xs;
+}
+.cockpit {
+  z-index: 9000;
+}

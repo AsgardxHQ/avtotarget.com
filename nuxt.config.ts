@@ -23,5 +23,8 @@ export default defineNuxtConfig({
   tailwindcss: {
     // Options
   },
-  // serverMiddleware: ['~/server-middleware/export-products']
+  serverMiddleware: [{ 
+    path: '/',
+    handler: './middleware/redirect'
+  }]
 })

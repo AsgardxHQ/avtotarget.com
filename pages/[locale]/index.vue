@@ -21,4 +21,5 @@ const { data }:any = await useAsyncData(
   'mainItems',
   () => $fetch('/api/v1/items?limit=20')
 )
+
 </script>
