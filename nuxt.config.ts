@@ -1,7 +1,12 @@
 import { defineNuxtConfig } from 'nuxt'
+// import { resolve } from 'path';
+import { fileURLToPath } from 'url';
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+  alias: {
+    'files': fileURLToPath(new URL('./files/products', import.meta.url))//resolve(__dirname, './files/products')
+  },
   build: {
     transpile: ['primevue']
   },

@@ -49,7 +49,7 @@
             name="product"
             :auto="true"
             :customUpload="true"
-            @uploader="uploadImg($event, slotProps.data, '/api/upload?itemType=products&fileType=images', 'images')"
+            @uploader="uploadImg($event, slotProps.data, '/api/upload?itemType=assets&fileType=products', 'images')"
             :chooseLabel="slotProps.data.image ? 'Изменить изображение' : 'Загрузить изображение'"
           />
           <span v-if="errorMessage" class="inline-block mt-4 text-center bg-red-600/75 text-sm p-2 rounded text-white">{{errorMessage}}</span>

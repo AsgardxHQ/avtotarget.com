@@ -19,10 +19,13 @@
         :to="`/${$route.params.locale}/product/${item.id}`"
         class="block mb-2"
       >
-        <img class="w-full h-40 object-cover" v-if="item.images && item.images.length > 0" :src="useAsset(item.images[0])">
-        <div v-else class="w-full h-40 bg-zinc-300 flex justify-center items-center text-slate-100">
-          <span>No image</span>
-        </div>
+        <!--${item.images[0]}-->
+        <ClientOnly>
+        <img 
+          class="w-full h-40 object-cover" 
+          v-if="item.images && item.images.length > 0" 
+          :src="`${getImage(item.images[0])}`">
+        </ClientOnly>
       </NuxtLink>
       <NuxtLink 
         :title="item[`name_${$route.params.locale}`]"
@@ -68,19 +71,8 @@ const addToCart = (id:number) => {
   }, 2000);
   return;
 }
-const getImage = (img:string) => {
-  console.log(new URL(img, '').href);
-  // return new URL(img, import.meta.url).href;
+const getImage = (path:string) => {
+  const img = new URL(`../../files/products/${path}`, import.meta.url);
+  return img;
 }
-
-function useAsset(path: string): string {
-  const assets = import.meta.glob('~/assets/**/*', {
-    eager: true,
-    import: 'default',
-  })
-  // @ts-expect-error: wrong type info
-  return assets['/assets/products/' + path]
-}
-
-// console.log(useAsset(`010302.jpeg`));
 </script>
