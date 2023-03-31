@@ -20,12 +20,12 @@
         class="block mb-2"
       >
         <!--${item.images[0]}-->
-        <ClientOnly>
+        <!-- <ClientOnly> -->
         <img 
           class="w-full h-40 object-cover" 
           v-if="item.images && item.images.length > 0" 
-          :src="`${getImage(item.images[0])}`">
-        </ClientOnly>
+          :src="`https://cdn.autotarget.com.ua/products/${item.images[0]}`"> <!--${getImage(item.images[0])}-->
+        <!-- </ClientOnly> -->
       </NuxtLink>
       <NuxtLink 
         :title="item[`name_${$route.params.locale}`]"
