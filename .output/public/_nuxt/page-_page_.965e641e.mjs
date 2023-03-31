@@ -1,0 +1,1 @@
+import{_ as e}from"./products.vue_vue_type_script_setup_true_lang.e1f16c93.mjs";import{a as o,o as a,c as r}from"./entry.f13a3b42.mjs";import"./filter.vue_vue_type_script_setup_true_lang.64bb75eb.mjs";import"./item.vue_vue_type_script_setup_true_lang.c9b880dd.mjs";const i=o({__name:"page-[page]",setup(t){return(p,_)=>(a(),r(e))}});export{i as default};
