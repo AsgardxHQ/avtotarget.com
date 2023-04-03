@@ -17,7 +17,7 @@ import { fileURLToPath } from 'url';
 import cookieSignature from 'cookie-signature';
 import { PrismaClient } from '@prisma/client';
 
-const _runtimeConfig = {"app":{"baseURL":"/","buildAssetsDir":"/_nuxt/","cdnURL":""},"nitro":{"routes":{},"envPrefix":"NUXT_"},"public":{},"cookieName":"__session","cookieSecret":"superdupersecret","cookieExpires":604800000,"cookieRememberMeExpires":604800000};
+const _runtimeConfig = {"app":{"baseURL":"/","buildAssetsDir":"/_nuxt/","cdnURL":""},"nitro":{"routes":{},"envPrefix":"NUXT_"},"public":{},"databaseUrl":"postgresql://postgres:67b35a8ce1978000@46.101.136.211:5432/avto-parts","cookieName":"__session","cookieSecret":"superdupersecret","cookieExpires":604800000,"cookieRememberMeExpires":604800000};
 const ENV_PREFIX = "NITRO_";
 const ENV_PREFIX_ALT = _runtimeConfig.nitro.envPrefix ?? process.env.NITRO_ENV_PREFIX ?? "_";
 const getEnv = (key) => {
@@ -342,367 +342,367 @@ const assets = {
   "/.DS_Store": {
     "type": "text/plain; charset=utf-8",
     "etag": "\"2004-VwhTsH1oUBNg8lUNpTVC0yzOR4s\"",
-    "mtime": "2023-03-31T15:46:48.479Z",
+    "mtime": "2023-04-03T12:45:39.935Z",
     "path": "../public/.DS_Store"
   },
   "/favicon.ico": {
     "type": "image/vnd.microsoft.icon",
     "etag": "\"57e-bTDjcWN11V3N1s0VW5eb40UjlM4\"",
-    "mtime": "2023-03-31T15:46:48.472Z",
+    "mtime": "2023-04-03T12:45:39.931Z",
     "path": "../public/favicon.ico"
   },
   "/manifest.json": {
     "type": "application/json",
-    "etag": "\"216a-VAVJnNu1l6aXI61zx51EkB1Q1Ww\"",
-    "mtime": "2023-03-31T15:46:48.360Z",
+    "etag": "\"216a-2CjBPrKJajOEoz6Ff0+VgHGrGIg\"",
+    "mtime": "2023-04-03T12:45:39.849Z",
     "path": "../public/manifest.json"
   },
   "/_nuxt/6937417.7a1b32a5.jpeg": {
     "type": "image/jpeg",
     "etag": "\"9654-V8nVFIXurrdq4F+RdJ+GI4hIKTM\"",
-    "mtime": "2023-03-31T15:46:48.441Z",
+    "mtime": "2023-04-03T12:45:39.901Z",
     "path": "../public/_nuxt/6937417.7a1b32a5.jpeg"
   },
   "/_nuxt/6937429.72ad1b93.jpeg": {
     "type": "image/jpeg",
     "etag": "\"6a95-WR60waThhcqGNCrY28KHNs42MlI\"",
-    "mtime": "2023-03-31T15:46:48.441Z",
+    "mtime": "2023-04-03T12:45:39.901Z",
     "path": "../public/_nuxt/6937429.72ad1b93.jpeg"
   },
   "/_nuxt/[request].25cb51f8.css": {
     "type": "text/css; charset=utf-8",
     "etag": "\"3c-d/+6TnH9cnJE2nlmTt+r8QYYPzA\"",
-    "mtime": "2023-03-31T15:46:48.440Z",
+    "mtime": "2023-04-03T12:45:39.900Z",
     "path": "../public/_nuxt/[request].25cb51f8.css"
   },
   "/_nuxt/_productId_.29a018dc.mjs": {
     "type": "application/javascript",
     "etag": "\"a5e-BhqnrUe2tvyy8jaqRfe0PNad28U\"",
-    "mtime": "2023-03-31T15:46:48.439Z",
+    "mtime": "2023-04-03T12:45:39.899Z",
     "path": "../public/_nuxt/_productId_.29a018dc.mjs"
   },
   "/_nuxt/_request_.9015e1fb.mjs": {
     "type": "application/javascript",
     "etag": "\"6a7-Ta28sC8J5wm/xBibjYiwZYtwcck\"",
-    "mtime": "2023-03-31T15:46:48.438Z",
+    "mtime": "2023-04-03T12:45:39.898Z",
     "path": "../public/_nuxt/_request_.9015e1fb.mjs"
   },
   "/_nuxt/about_us.7feec376.mjs": {
     "type": "application/javascript",
     "etag": "\"a3-8UDT1x1Jx8zqgMBPqXmleh2iYVw\"",
-    "mtime": "2023-03-31T15:46:48.437Z",
+    "mtime": "2023-04-03T12:45:39.898Z",
     "path": "../public/_nuxt/about_us.7feec376.mjs"
   },
   "/_nuxt/admin-only.cd20c8ab.mjs": {
     "type": "application/javascript",
     "etag": "\"8d-EgnddBTNWDTYFDj83g183TZD9O8\"",
-    "mtime": "2023-03-31T15:46:48.437Z",
+    "mtime": "2023-04-03T12:45:39.897Z",
     "path": "../public/_nuxt/admin-only.cd20c8ab.mjs"
   },
   "/_nuxt/cart.dd0e9757.mjs": {
     "type": "application/javascript",
     "etag": "\"226a-qMuXtpON/xLyVLs98LmkPREb0Xk\"",
-    "mtime": "2023-03-31T15:46:48.436Z",
+    "mtime": "2023-04-03T12:45:39.896Z",
     "path": "../public/_nuxt/cart.dd0e9757.mjs"
   },
   "/_nuxt/color.473bc8ca.png": {
     "type": "image/png",
     "etag": "\"2873-/0xLyyIHiRspL1RO202p0t9dRc8\"",
-    "mtime": "2023-03-31T15:46:48.434Z",
+    "mtime": "2023-04-03T12:45:39.895Z",
     "path": "../public/_nuxt/color.473bc8ca.png"
   },
   "/_nuxt/contacts.398f2811.mjs": {
     "type": "application/javascript",
     "etag": "\"a8-GZ4GB6XGk6e+2JzPXc7r4aXjl7g\"",
-    "mtime": "2023-03-31T15:46:48.433Z",
+    "mtime": "2023-04-03T12:45:39.895Z",
     "path": "../public/_nuxt/contacts.398f2811.mjs"
   },
   "/_nuxt/delivery.fca49852.mjs": {
     "type": "application/javascript",
     "etag": "\"a8-Pn3h/QJ+tYwGvkJjz8aIsXrTzLo\"",
-    "mtime": "2023-03-31T15:46:48.432Z",
+    "mtime": "2023-04-03T12:45:39.894Z",
     "path": "../public/_nuxt/delivery.fca49852.mjs"
   },
   "/_nuxt/entry.ac35538f.css": {
     "type": "text/css; charset=utf-8",
     "etag": "\"2c2cd-DanmkIyHKkl22+X8J0RW9JXFl7g\"",
-    "mtime": "2023-03-31T15:46:48.432Z",
+    "mtime": "2023-04-03T12:45:39.893Z",
     "path": "../public/_nuxt/entry.ac35538f.css"
   },
   "/_nuxt/entry.f13a3b42.mjs": {
     "type": "application/javascript",
     "etag": "\"6d605-nrHFrwvQKrhMnv0FGlm05AU/mYc\"",
-    "mtime": "2023-03-31T15:46:48.430Z",
+    "mtime": "2023-04-03T12:45:39.891Z",
     "path": "../public/_nuxt/entry.f13a3b42.mjs"
   },
   "/_nuxt/error-404.7729cee9.css": {
     "type": "text/css; charset=utf-8",
     "etag": "\"e34-qomFKLEnDzFbIPwCfuxqIb18mQU\"",
-    "mtime": "2023-03-31T15:46:48.429Z",
+    "mtime": "2023-04-03T12:45:39.889Z",
     "path": "../public/_nuxt/error-404.7729cee9.css"
   },
   "/_nuxt/error-404.f887951e.mjs": {
     "type": "application/javascript",
     "etag": "\"8ae-dvrGz07IumtkKL22Jvbvz8QdXEo\"",
-    "mtime": "2023-03-31T15:46:48.428Z",
+    "mtime": "2023-04-03T12:45:39.889Z",
     "path": "../public/_nuxt/error-404.f887951e.mjs"
   },
   "/_nuxt/error-500.08851880.css": {
     "type": "text/css; charset=utf-8",
     "etag": "\"7a4-PsPGHWWrltFH34P9Q5DnkUTUhRE\"",
-    "mtime": "2023-03-31T15:46:48.428Z",
+    "mtime": "2023-04-03T12:45:39.888Z",
     "path": "../public/_nuxt/error-500.08851880.css"
   },
   "/_nuxt/error-500.c9a05021.mjs": {
     "type": "application/javascript",
     "etag": "\"757-7lPSvEY+V/K2Rlhs+quWyCBTXG8\"",
-    "mtime": "2023-03-31T15:46:48.427Z",
+    "mtime": "2023-04-03T12:45:39.887Z",
     "path": "../public/_nuxt/error-500.c9a05021.mjs"
   },
   "/_nuxt/error-component.feff82a2.mjs": {
     "type": "application/javascript",
     "etag": "\"44f-PMSzQBgkiY8IGpTtcCg6SK9xsXQ\"",
-    "mtime": "2023-03-31T15:46:48.426Z",
+    "mtime": "2023-04-03T12:45:39.887Z",
     "path": "../public/_nuxt/error-component.feff82a2.mjs"
   },
   "/_nuxt/filter.vue_vue_type_script_setup_true_lang.64bb75eb.mjs": {
     "type": "application/javascript",
     "etag": "\"1047-E3HjdF9j3oFogfzrZ66TORdrUQM\"",
-    "mtime": "2023-03-31T15:46:48.424Z",
+    "mtime": "2023-04-03T12:45:39.886Z",
     "path": "../public/_nuxt/filter.vue_vue_type_script_setup_true_lang.64bb75eb.mjs"
   },
   "/_nuxt/guest-only.46a8c39f.mjs": {
     "type": "application/javascript",
     "etag": "\"a7-6WKRdiBoZIY5iieqM6NnK6sHXgo\"",
-    "mtime": "2023-03-31T15:46:48.423Z",
+    "mtime": "2023-04-03T12:45:39.885Z",
     "path": "../public/_nuxt/guest-only.46a8c39f.mjs"
   },
   "/_nuxt/index.0c84b971.mjs": {
     "type": "application/javascript",
     "etag": "\"8a-wTjGDVDtRY7jW/qzeXs0qEP2x6g\"",
-    "mtime": "2023-03-31T15:46:48.423Z",
+    "mtime": "2023-04-03T12:45:39.884Z",
     "path": "../public/_nuxt/index.0c84b971.mjs"
   },
   "/_nuxt/index.7b3929e4.mjs": {
     "type": "application/javascript",
     "etag": "\"3d7-QvGQQ8+uv2hkjuT30n57UubMrgc\"",
-    "mtime": "2023-03-31T15:46:48.421Z",
+    "mtime": "2023-04-03T12:45:39.884Z",
     "path": "../public/_nuxt/index.7b3929e4.mjs"
   },
   "/_nuxt/item.vue_vue_type_script_setup_true_lang.c9b880dd.mjs": {
     "type": "application/javascript",
     "etag": "\"8b3-3omVWJNy30dIBBNMZf/4xkKFSsk\"",
-    "mtime": "2023-03-31T15:46:48.418Z",
+    "mtime": "2023-04-03T12:45:39.883Z",
     "path": "../public/_nuxt/item.vue_vue_type_script_setup_true_lang.c9b880dd.mjs"
   },
   "/_nuxt/page-_page_.3fbb3480.mjs": {
     "type": "application/javascript",
     "etag": "\"163-Ep1CpXMqcWQVhY6ZTjxsOUuK6kc\"",
-    "mtime": "2023-03-31T15:46:48.417Z",
+    "mtime": "2023-04-03T12:45:39.882Z",
     "path": "../public/_nuxt/page-_page_.3fbb3480.mjs"
   },
   "/_nuxt/page-_page_.965e641e.mjs": {
     "type": "application/javascript",
     "etag": "\"163-Ep1CpXMqcWQVhY6ZTjxsOUuK6kc\"",
-    "mtime": "2023-03-31T15:46:48.416Z",
+    "mtime": "2023-04-03T12:45:39.882Z",
     "path": "../public/_nuxt/page-_page_.965e641e.mjs"
   },
   "/_nuxt/primeicons.2ab98f70.svg": {
     "type": "image/svg+xml",
     "etag": "\"42564-Yhd1suxVX9LdFSokOQz23+7haLE\"",
-    "mtime": "2023-03-31T15:46:48.414Z",
+    "mtime": "2023-04-03T12:45:39.880Z",
     "path": "../public/_nuxt/primeicons.2ab98f70.svg"
   },
   "/_nuxt/primeicons.788dba0a.ttf": {
     "type": "font/ttf",
     "etag": "\"10454-5shsqQqftCgvs1Uj1W/eAOeKFBY\"",
-    "mtime": "2023-03-31T15:46:48.411Z",
+    "mtime": "2023-04-03T12:45:39.879Z",
     "path": "../public/_nuxt/primeicons.788dba0a.ttf"
   },
   "/_nuxt/primeicons.c9eaf535.eot": {
     "type": "application/vnd.ms-fontobject",
     "etag": "\"10504-zPZeQGgLDt5qtGk51CHIMa5q/PQ\"",
-    "mtime": "2023-03-31T15:46:48.408Z",
+    "mtime": "2023-04-03T12:45:39.878Z",
     "path": "../public/_nuxt/primeicons.c9eaf535.eot"
   },
   "/_nuxt/primeicons.feb68bf6.woff": {
     "type": "font/woff",
     "etag": "\"104a0-IeR36hnhW2Y0S8wjs/uyFhCSpwc\"",
-    "mtime": "2023-03-31T15:46:48.405Z",
+    "mtime": "2023-04-03T12:45:39.877Z",
     "path": "../public/_nuxt/primeicons.feb68bf6.woff"
   },
   "/_nuxt/products.vue_vue_type_script_setup_true_lang.e1f16c93.mjs": {
     "type": "application/javascript",
     "etag": "\"ea4-tyDJJ/LwNFGRAXS/+KYVKer3ZN0\"",
-    "mtime": "2023-03-31T15:46:48.404Z",
+    "mtime": "2023-04-03T12:45:39.876Z",
     "path": "../public/_nuxt/products.vue_vue_type_script_setup_true_lang.e1f16c93.mjs"
   },
   "/_nuxt/redirect.aa1e83c9.mjs": {
     "type": "application/javascript",
     "etag": "\"7a-8hbs2Kj8586WIQQpPCJ1tYVuhXY\"",
-    "mtime": "2023-03-31T15:46:48.403Z",
+    "mtime": "2023-04-03T12:45:39.875Z",
     "path": "../public/_nuxt/redirect.aa1e83c9.mjs"
   },
   "/_nuxt/user-only.56facbfd.mjs": {
     "type": "application/javascript",
     "etag": "\"8d-bmkVfzSNROZveDqXl2nbX2v44Wo\"",
-    "mtime": "2023-03-31T15:46:48.400Z",
+    "mtime": "2023-04-03T12:45:39.875Z",
     "path": "../public/_nuxt/user-only.56facbfd.mjs"
   },
   "/app/style.css": {
     "type": "text/css; charset=utf-8",
     "etag": "\"218-+dEyC/bJJMBIuT33PtHHUu8mBYs\"",
-    "mtime": "2023-03-31T15:46:48.478Z",
+    "mtime": "2023-04-03T12:45:39.934Z",
     "path": "../public/app/style.css"
   },
   "/cockpit/.DS_Store": {
     "type": "text/plain; charset=utf-8",
     "etag": "\"1804-vS9zVhtxKJxcrlYyRg9fX5382dc\"",
-    "mtime": "2023-03-31T15:46:48.476Z",
+    "mtime": "2023-04-03T12:45:39.933Z",
     "path": "../public/cockpit/.DS_Store"
   },
   "/cockpit/style.css": {
     "type": "text/css; charset=utf-8",
     "etag": "\"b9-TDi6Nbdqt0Ki/cHLn2hGvuXdYmw\"",
-    "mtime": "2023-03-31T15:46:48.475Z",
+    "mtime": "2023-04-03T12:45:39.932Z",
     "path": "../public/cockpit/style.css"
   },
   "/images/.DS_Store": {
     "type": "text/plain; charset=utf-8",
     "etag": "\"1804-DJztbNQQZQsEkKbsTcQ7dDGuJPY\"",
-    "mtime": "2023-03-31T15:46:48.471Z",
+    "mtime": "2023-04-03T12:45:39.929Z",
     "path": "../public/images/.DS_Store"
   },
   "/images/logo-1.png": {
     "type": "image/png",
     "etag": "\"72f7-qvkQ4QUr2fB+iSET/8C6HLEFm68\"",
-    "mtime": "2023-03-31T15:46:48.452Z",
+    "mtime": "2023-04-03T12:45:39.911Z",
     "path": "../public/images/logo-1.png"
   },
   "/images/logo-2.png": {
     "type": "image/png",
     "etag": "\"95c2-RABL14+7QHjICQFoNzSvim9mH7g\"",
-    "mtime": "2023-03-31T15:46:48.451Z",
+    "mtime": "2023-04-03T12:45:39.910Z",
     "path": "../public/images/logo-2.png"
   },
   "/images/logo-3.png": {
     "type": "image/png",
     "etag": "\"77c1-hqNDj5k9Xu7HFw4KxGqQ+zFg3Ys\"",
-    "mtime": "2023-03-31T15:46:48.450Z",
+    "mtime": "2023-04-03T12:45:39.909Z",
     "path": "../public/images/logo-3.png"
   },
   "/images/logo-4.png": {
     "type": "image/png",
     "etag": "\"8391-tZAsaeDFg1ele/rXO2DeC06rT+0\"",
-    "mtime": "2023-03-31T15:46:48.449Z",
+    "mtime": "2023-04-03T12:45:39.908Z",
     "path": "../public/images/logo-4.png"
   },
   "/images/logo-5.png": {
     "type": "image/png",
     "etag": "\"73b2-dBtpYh8wZ3DPpZgWHiFn0yJ8OXM\"",
-    "mtime": "2023-03-31T15:46:48.447Z",
+    "mtime": "2023-04-03T12:45:39.907Z",
     "path": "../public/images/logo-5.png"
   },
   "/images/logo-6.png": {
     "type": "image/png",
     "etag": "\"7fd3-7pZmvHyz33N7N9pHib+3l7TJjMo\"",
-    "mtime": "2023-03-31T15:46:48.446Z",
+    "mtime": "2023-04-03T12:45:39.906Z",
     "path": "../public/images/logo-6.png"
   },
   "/images/no_image.png": {
     "type": "image/png",
     "etag": "\"3c3d-sfq5TQd2LavzZpXwhE+XztDm/A4\"",
-    "mtime": "2023-03-31T15:46:48.445Z",
+    "mtime": "2023-04-03T12:45:39.904Z",
     "path": "../public/images/no_image.png"
   },
   "/images/cars/.DS_Store": {
     "type": "text/plain; charset=utf-8",
     "etag": "\"1804-9bLn4QNu/VqHw99KHVREbLiLLu8\"",
-    "mtime": "2023-03-31T15:46:48.470Z",
+    "mtime": "2023-04-03T12:45:39.928Z",
     "path": "../public/images/cars/.DS_Store"
   },
   "/images/cars/logo-27160.png": {
     "type": "image/png",
     "etag": "\"114b-UD0IBKCMV2E8y48bUk4SsVwzBr4\"",
-    "mtime": "2023-03-31T15:46:48.469Z",
+    "mtime": "2023-04-03T12:45:39.927Z",
     "path": "../public/images/cars/logo-27160.png"
   },
   "/images/cars/logo_2x-1e23c.png": {
     "type": "image/png",
     "etag": "\"2a0c-rOed2R5FWz5853U8G445JenIFlI\"",
-    "mtime": "2023-03-31T15:46:48.468Z",
+    "mtime": "2023-04-03T12:45:39.926Z",
     "path": "../public/images/cars/logo_2x-1e23c.png"
   },
   "/images/cars/logo_2x-31eeb.png": {
     "type": "image/png",
     "etag": "\"2a0c-rOed2R5FWz5853U8G445JenIFlI\"",
-    "mtime": "2023-03-31T15:46:48.466Z",
+    "mtime": "2023-04-03T12:45:39.925Z",
     "path": "../public/images/cars/logo_2x-31eeb.png"
   },
   "/images/cars/logo_2x-67343.png": {
     "type": "image/png",
     "etag": "\"2a0c-rOed2R5FWz5853U8G445JenIFlI\"",
-    "mtime": "2023-03-31T15:46:48.465Z",
+    "mtime": "2023-04-03T12:45:39.924Z",
     "path": "../public/images/cars/logo_2x-67343.png"
   },
   "/images/cars/logo_2x-7383a.png": {
     "type": "image/png",
     "etag": "\"2a0c-rOed2R5FWz5853U8G445JenIFlI\"",
-    "mtime": "2023-03-31T15:46:48.464Z",
+    "mtime": "2023-04-03T12:45:39.923Z",
     "path": "../public/images/cars/logo_2x-7383a.png"
   },
   "/images/cars/logo_2x-86076.png": {
     "type": "image/png",
     "etag": "\"2a0c-rOed2R5FWz5853U8G445JenIFlI\"",
-    "mtime": "2023-03-31T15:46:48.463Z",
+    "mtime": "2023-04-03T12:45:39.922Z",
     "path": "../public/images/cars/logo_2x-86076.png"
   },
   "/images/cars/logo_2x-b3ae9.png": {
     "type": "image/png",
     "etag": "\"2a0c-rOed2R5FWz5853U8G445JenIFlI\"",
-    "mtime": "2023-03-31T15:46:48.462Z",
+    "mtime": "2023-04-03T12:45:39.921Z",
     "path": "../public/images/cars/logo_2x-b3ae9.png"
   },
   "/images/cars/logo_2x-b9e31.png": {
     "type": "image/png",
     "etag": "\"2a0c-rOed2R5FWz5853U8G445JenIFlI\"",
-    "mtime": "2023-03-31T15:46:48.461Z",
+    "mtime": "2023-04-03T12:45:39.920Z",
     "path": "../public/images/cars/logo_2x-b9e31.png"
   },
   "/images/cars/logo_2x-dbf8d.png": {
     "type": "image/png",
     "etag": "\"2a0c-rOed2R5FWz5853U8G445JenIFlI\"",
-    "mtime": "2023-03-31T15:46:48.460Z",
+    "mtime": "2023-04-03T12:45:39.918Z",
     "path": "../public/images/cars/logo_2x-dbf8d.png"
   },
   "/images/description/car.png": {
     "type": "image/png",
     "etag": "\"12c1-fd7dfDmE4ALiIJeUs11/Ul+X1w4\"",
-    "mtime": "2023-03-31T15:46:48.458Z",
+    "mtime": "2023-04-03T12:45:39.917Z",
     "path": "../public/images/description/car.png"
   },
   "/images/description/code.png": {
     "type": "image/png",
     "etag": "\"c92-hosuX5TuwJbUfFc/ZULId8WWGwo\"",
-    "mtime": "2023-03-31T15:46:48.457Z",
+    "mtime": "2023-04-03T12:45:39.916Z",
     "path": "../public/images/description/code.png"
   },
   "/images/description/gear.png": {
     "type": "image/png",
     "etag": "\"1d84-4CbqQH4HqW/Or1WJqZO6k752aJw\"",
-    "mtime": "2023-03-31T15:46:48.456Z",
+    "mtime": "2023-04-03T12:45:39.915Z",
     "path": "../public/images/description/gear.png"
   },
   "/images/description/manufacturer.png": {
     "type": "image/png",
     "etag": "\"14cf-sLuAVyYWsjHTZxiPzxOKgrrnZoo\"",
-    "mtime": "2023-03-31T15:46:48.455Z",
+    "mtime": "2023-04-03T12:45:39.914Z",
     "path": "../public/images/description/manufacturer.png"
   },
   "/images/description/piston.png": {
     "type": "image/png",
     "etag": "\"3f00-5s/Y3rnPvyxB30gkP3uN8ZhPacE\"",
-    "mtime": "2023-03-31T15:46:48.454Z",
+    "mtime": "2023-04-03T12:45:39.913Z",
     "path": "../public/images/description/piston.png"
   }
 };

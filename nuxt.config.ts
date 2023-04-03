@@ -1,16 +1,12 @@
 import { defineNuxtConfig } from 'nuxt'
-// import { resolve } from 'path';
-import { fileURLToPath } from 'url';
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-  alias: {
-    'files': fileURLToPath(new URL('./files/products', import.meta.url))//resolve(__dirname, './files/products')
-  },
   build: {
     transpile: ['primevue']
   },
   runtimeConfig: {
+    databaseUrl: process.env.NUXT_DATABASE_URL,
     cookieName: process.env.COOKIE_NAME || '__session',
     cookieSecret: process.env.COOKIE_SECRET || 'secret',
     cookieExpires: parseInt(process.env.COOKIE_REMEMBER_ME_EXPIRES || '1000 * 60 * 60 * 24', 10), // 1 day
