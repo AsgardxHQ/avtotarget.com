@@ -3516,7 +3516,7 @@ const Component = vue_cjs_prod.defineComponent({
 const _sfc_main$i = /* @__PURE__ */ vue_cjs_prod.defineComponent({
   __name: "pagination",
   __ssrInlineRender: true,
-  props: ["pagination"],
+  props: ["pagination", "refresh"],
   setup(__props) {
     const route = useRoute();
     const getPages = vue_cjs_prod.computed(() => {
@@ -3651,7 +3651,9 @@ _sfc_main$i.setup = (props, ctx) => {
 const _sfc_main$h = /* @__PURE__ */ vue_cjs_prod.defineComponent({
   __name: "filter",
   __ssrInlineRender: true,
-  async setup(__props) {
+  props: ["refresh"],
+  emits: ["changeQuery"],
+  async setup(__props, { emit: emits }) {
     let __temp, __restore;
     useRouter();
     const route = useRoute();
@@ -4073,7 +4075,7 @@ const getAllData = defineStore({
     return {
       items: [],
       count_items: 0,
-      refresh: null
+      firstLoad: true
     };
   },
   actions: {
@@ -4226,7 +4228,8 @@ _sfc_main$g.setup = (props, ctx) => {
 const _sfc_main$f = /* @__PURE__ */ vue_cjs_prod.defineComponent({
   __name: "products",
   __ssrInlineRender: true,
-  setup(__props) {
+  async setup(__props) {
+    let __temp, __restore;
     const route = useRoute();
     const currentItems = vue_cjs_prod.ref([]);
     const currentCategory = vue_cjs_prod.ref([]);
@@ -4234,18 +4237,31 @@ const _sfc_main$f = /* @__PURE__ */ vue_cjs_prod.defineComponent({
     const pagination = vue_cjs_prod.ref({
       count: 0
     });
-    const getData = async () => {
-      const { items: items2, count } = await getAllData().getItems(route.params, route.query);
-      currentItems.value = items2;
-      pagination.value.count = +count;
+    const changeQuery = async (query) => {
+      await getData(query);
     };
-    getData();
-    vue_cjs_prod.watch(() => route.query, async (newQuery, oldQuery) => {
-      getData();
-    });
+    const queryToString = (query) => {
+      let str = "";
+      for (let key in query) {
+        if (key && query[key]) {
+          str += `${key}=${query[key]}&`;
+        }
+      }
+      return str;
+    };
+    const getData = async (query = route.query) => {
+      const { data, refresh } = await useFetch(`/api/v1/items?${queryToString(route.params)}${queryToString(query)}&limit=21`, "$gfvq5tKCLR");
+      await refresh({ dedupe: true });
+      currentItems.value = data.value.items;
+      pagination.value.count = +data.value.count;
+    };
+    [__temp, __restore] = vue_cjs_prod.withAsyncContext(() => getData()), await __temp, __restore();
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<div${serverRenderer.exports.ssrRenderAttrs(vue_cjs_prod.mergeProps({ class: "md:flex" }, _attrs))}><div class="sm:w-full md:w-3/12">`);
-      _push(serverRenderer.exports.ssrRenderComponent(_sfc_main$h, { class: "product-page" }, null, _parent));
+      _push(serverRenderer.exports.ssrRenderComponent(_sfc_main$h, {
+        onChangeQuery: changeQuery,
+        class: "product-page"
+      }, null, _parent));
       _push(`</div><div class="sm:w-full md:w-9/12">`);
       if (currentCategory.value) {
         _push(`<div class="w-full text-xl text-center uppercase">${serverRenderer.exports.ssrInterpolate(currentCategory.value[`name_${vue_cjs_prod.unref(route).params.locale}`])}</div>`);
@@ -4254,13 +4270,14 @@ const _sfc_main$f = /* @__PURE__ */ vue_cjs_prod.defineComponent({
       }
       _push(`<div class="w-full px-2 py-3"><h3 class="text-2xl text-slate-600 border-b-2 border-zinc-500">${serverRenderer.exports.ssrInterpolate(_ctx.$t("new_supply"))}</h3></div>`);
       if (currentItems.value && currentItems.value.length > 0) {
-        _push(`<div class="w-full grid grid-flow-row-dense sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 mb-12">`);
+        _push(`<!--[--><div class="w-full grid grid-flow-row-dense sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 mb-12">`);
         _push(serverRenderer.exports.ssrRenderComponent(_sfc_main$g, { items: currentItems.value }, null, _parent));
         _push(`</div>`);
+        _push(serverRenderer.exports.ssrRenderComponent(_sfc_main$i, { pagination: pagination.value }, null, _parent));
+        _push(`<!--]-->`);
       } else {
         _push(`<!---->`);
       }
-      _push(serverRenderer.exports.ssrRenderComponent(_sfc_main$i, { pagination: pagination.value }, null, _parent));
       _push(`</div>`);
       if (isLoader.value) {
         _push(`<div class="fixed inset-0 w-full h-full bg-slate-200/50 flex justify-center items-center"><span class="text-2xl text-slate-800">LOADING</span></div>`);
@@ -4389,7 +4406,7 @@ const routes = [
     children: [],
     meta: meta$9,
     alias: [],
-    component: () => import('./_nuxt/page-_page_.ce86aa9b.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/page-_page_.b0616872.mjs').then((m) => m.default || m)
   },
   {
     name: "locale-category-page-page",
@@ -4398,7 +4415,7 @@ const routes = [
     children: [],
     meta: meta$8,
     alias: [],
-    component: () => import('./_nuxt/page-_page_.0be9c02c.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/page-_page_.05875d20.mjs').then((m) => m.default || m)
   },
   {
     name: "locale-cart",
@@ -4407,7 +4424,7 @@ const routes = [
     children: [],
     meta: meta$7,
     alias: [],
-    component: () => import('./_nuxt/cart.72e072c7.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/cart.f8bbb67c.mjs').then((m) => m.default || m)
   },
   {
     name: "locale",
@@ -4416,7 +4433,7 @@ const routes = [
     children: [],
     meta: meta$6,
     alias: [],
-    component: () => import('./_nuxt/index.ae3838a3.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/index.756e0482.mjs').then((m) => m.default || m)
   },
   {
     name: "locale-pages-about_us",
@@ -4425,7 +4442,7 @@ const routes = [
     children: [],
     meta: meta$5,
     alias: [],
-    component: () => import('./_nuxt/about_us.a7f3aeee.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/about_us.95605dce.mjs').then((m) => m.default || m)
   },
   {
     name: "locale-pages-contacts",
@@ -4434,7 +4451,7 @@ const routes = [
     children: [],
     meta: meta$4,
     alias: [],
-    component: () => import('./_nuxt/contacts.13706072.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/contacts.53945e66.mjs').then((m) => m.default || m)
   },
   {
     name: "locale-pages-delivery",
@@ -4443,7 +4460,7 @@ const routes = [
     children: [],
     meta: meta$3,
     alias: [],
-    component: () => import('./_nuxt/delivery.8bb75156.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/delivery.1e0f7ccf.mjs').then((m) => m.default || m)
   },
   {
     name: "locale-product-productId",
@@ -4452,7 +4469,7 @@ const routes = [
     children: [],
     meta: meta$2,
     alias: [],
-    component: () => import('./_nuxt/_productId_.fa8eb27f.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/_productId_.554509cc.mjs').then((m) => m.default || m)
   },
   {
     name: "locale-search-request",
@@ -4461,7 +4478,7 @@ const routes = [
     children: [],
     meta: meta$1,
     alias: [],
-    component: () => import('./_nuxt/_request_.455bb089.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/_request_.90ad14f2.mjs').then((m) => m.default || m)
   },
   {
     name: "index",
@@ -4470,7 +4487,7 @@ const routes = [
     children: [],
     meta,
     alias: [],
-    component: () => import('./_nuxt/index.1f8e206c.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/index.1a2606d7.mjs').then((m) => m.default || m)
   }
 ];
 const configRouterOptions = {};
@@ -4479,10 +4496,10 @@ const routerOptions = {
 };
 const globalMiddleware = [];
 const namedMiddleware = {
-  "admin-only": () => import('./_nuxt/admin-only.c5fc17d7.mjs'),
-  "guest-only": () => import('./_nuxt/guest-only.d2932f3f.mjs'),
+  "admin-only": () => import('./_nuxt/admin-only.3bb82397.mjs'),
+  "guest-only": () => import('./_nuxt/guest-only.ca4f28a6.mjs'),
   redirect: () => import('./_nuxt/redirect.56e10c5c.mjs'),
-  "user-only": () => import('./_nuxt/user-only.46c9503b.mjs')
+  "user-only": () => import('./_nuxt/user-only.7d7a5de6.mjs')
 };
 const node_modules_nuxt_dist_pages_runtime_router_mjs_qNv5Ky2ZmB = defineNuxtPlugin(async (nuxtApp) => {
   let __temp, __restore;
@@ -6046,7 +6063,7 @@ const _sfc_main$d = {
   __name: "nuxt-root",
   __ssrInlineRender: true,
   setup(__props) {
-    const ErrorComponent = vue_cjs_prod.defineAsyncComponent(() => import('./_nuxt/error-component.0bca0bd0.mjs'));
+    const ErrorComponent = vue_cjs_prod.defineAsyncComponent(() => import('./_nuxt/error-component.ff4b4abd.mjs'));
     const nuxtApp = useNuxtApp();
     vue_cjs_prod.provide("_route", useRoute());
     nuxtApp.hooks.callHookWith((hooks) => hooks.map((hook) => hook()), "vue:setup");
@@ -6119,7 +6136,7 @@ const _sfc_main$c = /* @__PURE__ */ vue_cjs_prod.defineComponent({
           default: vue_cjs_prod.withCtx((_, _push2, _parent2, _scopeId) => {
             if (_push2) {
               if (item.images && item.images.length > 0) {
-                _push2(`<img${serverRenderer.exports.ssrRenderAttr("src", `/images/products/${item.images[0]}`)}${_scopeId}>`);
+                _push2(`<img${serverRenderer.exports.ssrRenderAttr("src", `https://cdn.autotarget.com.ua/products/${item.images[0]}`)}${_scopeId}>`);
               } else {
                 _push2(`<!---->`);
               }
@@ -6127,7 +6144,7 @@ const _sfc_main$c = /* @__PURE__ */ vue_cjs_prod.defineComponent({
               return [
                 item.images && item.images.length > 0 ? (vue_cjs_prod.openBlock(), vue_cjs_prod.createBlock("img", {
                   key: 0,
-                  src: `/images/products/${item.images[0]}`
+                  src: `https://cdn.autotarget.com.ua/products/${item.images[0]}`
                 }, null, 8, ["src"])) : vue_cjs_prod.createCommentVNode("", true)
               ];
             }
@@ -17603,7 +17620,7 @@ const _sfc_main$6 = /* @__PURE__ */ vue_cjs_prod.defineComponent({
               }
               _push2(`<li${_scopeId}><span${_scopeId}>\u041F\u0440\u0438\u043C\u0435\u0447\u0430\u043D\u0438\u044F: </span> ${serverRenderer.exports.ssrInterpolate(slotProps.data.fields.description)}</li><li${_scopeId}><span${_scopeId}>\u0414\u0430\u0442\u0430 \u0437\u0430\u043A\u0430\u0437\u0430: </span> ${serverRenderer.exports.ssrInterpolate(convertData(slotProps.data.ts))}</li></ul></div><div class="w-full"${_scopeId}><!--[-->`);
               serverRenderer.exports.ssrRenderList(slotProps.data.fullItems, (item) => {
-                _push2(`<div class="flex pt-4 bg-white"${_scopeId}><div class="w-1/4"${_scopeId}><img${serverRenderer.exports.ssrRenderAttr("src", `/images/products/${item.images[0]}`)}${_scopeId}></div><div class="w-3/4"${_scopeId}><div${_scopeId}><p${_scopeId}>${serverRenderer.exports.ssrInterpolate(item[`name_${vue_cjs_prod.unref(route).params.locale}`])}</p><small class="font-bold"${_scopeId}>${serverRenderer.exports.ssrInterpolate(item.code_vendor)}</small></div><div class="flex"${_scopeId}><div class="w-1/3"${_scopeId}><span class="font-bold"${_scopeId}>\u0426\u0435\u043D\u0430: </span> ${serverRenderer.exports.ssrInterpolate(item.price_retail / 100)} \u0433\u0440\u043D. </div><div class="w-1/3"${_scopeId}><span class="font-bold"${_scopeId}>\u041A\u043E\u043B-\u0432\u043E: </span> ${serverRenderer.exports.ssrInterpolate(slotProps.data.items[item.id])} \u0448\u0442. </div><div class="w-1/3"${_scopeId}><span class="font-bold"${_scopeId}>\u0418\u0442\u043E\u0433\u043E: </span> ${serverRenderer.exports.ssrInterpolate(item.price_retail * slotProps.data.items[item.id] / 100)} \u0433\u0440\u043D. </div></div></div></div>`);
+                _push2(`<div class="flex pt-4 bg-white"${_scopeId}><div class="w-1/4"${_scopeId}><img${serverRenderer.exports.ssrRenderAttr("src", `https://cdn.autotarget.com.ua/products/${item.images[0]}`)}${_scopeId}></div><div class="w-3/4"${_scopeId}><div${_scopeId}><p${_scopeId}>${serverRenderer.exports.ssrInterpolate(item[`name_${vue_cjs_prod.unref(route).params.locale}`])}</p><small class="font-bold"${_scopeId}>${serverRenderer.exports.ssrInterpolate(item.code_vendor)}</small></div><div class="flex"${_scopeId}><div class="w-1/3"${_scopeId}><span class="font-bold"${_scopeId}>\u0426\u0435\u043D\u0430: </span> ${serverRenderer.exports.ssrInterpolate(item.price_retail / 100)} \u0433\u0440\u043D. </div><div class="w-1/3"${_scopeId}><span class="font-bold"${_scopeId}>\u041A\u043E\u043B-\u0432\u043E: </span> ${serverRenderer.exports.ssrInterpolate(slotProps.data.items[item.id])} \u0448\u0442. </div><div class="w-1/3"${_scopeId}><span class="font-bold"${_scopeId}>\u0418\u0442\u043E\u0433\u043E: </span> ${serverRenderer.exports.ssrInterpolate(item.price_retail * slotProps.data.items[item.id] / 100)} \u0433\u0440\u043D. </div></div></div></div>`);
               });
               _push2(`<!--]--><div class="flex justify-end"${_scopeId}><span class="font-bold"${_scopeId}>\u0421\u0443\u043C\u043C\u0430 \u0437\u0430\u043A\u0430\u0437\u0430: </span> ${serverRenderer.exports.ssrInterpolate(calcTotal(slotProps.data))} \u0433\u0440\u043D. </div></div>`);
             } else {
@@ -17656,7 +17673,7 @@ const _sfc_main$6 = /* @__PURE__ */ vue_cjs_prod.defineComponent({
                     }, [
                       vue_cjs_prod.createVNode("div", { class: "w-1/4" }, [
                         vue_cjs_prod.createVNode("img", {
-                          src: `/images/products/${item.images[0]}`
+                          src: `https://cdn.autotarget.com.ua/products/${item.images[0]}`
                         }, null, 8, ["src"])
                       ]),
                       vue_cjs_prod.createVNode("div", { class: "w-3/4" }, [
