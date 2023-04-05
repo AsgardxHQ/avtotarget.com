@@ -56,7 +56,7 @@
 
 <script setup lang="ts">
   const route = useRoute();
-  const { pagination } = defineProps(['pagination']);
+  const { pagination, refresh } = defineProps(['pagination', 'refresh']);
   const getPages = computed(() => {
     const page = +route.params.page;
     const obj = {
@@ -71,7 +71,7 @@
       obj.max = page + 2;
     }
     return obj;
-  })
+  });
 </script>
 
 <style>

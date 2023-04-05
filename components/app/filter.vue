@@ -71,7 +71,8 @@
 </template>
 
 <script setup lang="ts">
-
+const emits = defineEmits(['changeQuery'])
+const { refresh } = defineProps(['refresh']);
 const router = useRouter();
 const route = useRoute();
 const { data:filters } = await useFetch('/api/v1/filters');
@@ -87,14 +88,16 @@ const modelsList = computed(() => {
   return filters.value.filter(f => f.parent_id === filterData.make);
 });
 
-const submitFilter = () => {
+const submitFilter = async () => {
   let filters = {};
   for(let f in filterData) {
     if(['category', 'subcategory'].indexOf(f) === -1 && filterData[f]) {
       filters[f] = filterData[f];
     }
   }
+  emits('changeQuery', filters);
   router.push({path: `/${route.params.locale}/${filterData.category}/${filterData.subcategory ? filterData.subcategory+'/' : ''}page-1`, query: filters});
+  // await refresh({ dedupe: true });
 }
 </script>
 

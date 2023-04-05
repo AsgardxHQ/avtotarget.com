@@ -6,7 +6,7 @@ export const getAllData = defineStore({
     return {
       items: [],
       count_items: 0,
-      refresh: null
+      firstLoad: true,
     }
   },
   actions: {

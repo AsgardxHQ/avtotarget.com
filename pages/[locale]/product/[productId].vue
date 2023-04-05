@@ -3,7 +3,7 @@
   <div class="w-full flex mt-8">
     <div class="w-2/5 px-5">
       <div>
-        <img :src="`/images/products/${renderItem.images[0]}` || '/images/no_image.png'"/>
+        <img :src="`https://cdn.autotarget.com.ua/products/${renderItem.images[0]}` || '/images/no_image.png'"/>
       </div>
     </div>
     <div class="w-3/5 px-5 divide-y divide-slate-200">

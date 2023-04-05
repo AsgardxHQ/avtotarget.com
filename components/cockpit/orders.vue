@@ -51,7 +51,7 @@
         <div class="w-full">
           <div class="flex pt-4 bg-white" v-for="item in slotProps.data.fullItems" :key="item.id">
             <div class="w-1/4">
-              <img :src="`/images/products/${item.images[0]}`">
+              <img :src="`https://cdn.autotarget.com.ua/products/${item.images[0]}`">
             </div>
             <div class="w-3/4">
               <div>
