@@ -1,0 +1,1 @@
+import{C as s,e as a,M as n,N as t}from"./entry.7b8277be.mjs";const r=()=>{const e=s();return a(()=>e.value?e.value.access_level===0:!1)},l=n(async(e,u)=>{if(!r().value)return t({name:"login"})});export{l as default};
