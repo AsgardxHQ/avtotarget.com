@@ -4406,7 +4406,7 @@ const routes = [
     children: [],
     meta: meta$9,
     alias: [],
-    component: () => import('./_nuxt/page-_page_.8347db31.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/page-_page_.f530f64d.mjs').then((m) => m.default || m)
   },
   {
     name: "locale-category-page-page",
@@ -4415,7 +4415,7 @@ const routes = [
     children: [],
     meta: meta$8,
     alias: [],
-    component: () => import('./_nuxt/page-_page_.8e3bad31.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/page-_page_.ad464551.mjs').then((m) => m.default || m)
   },
   {
     name: "locale-cart",
@@ -4424,7 +4424,7 @@ const routes = [
     children: [],
     meta: meta$7,
     alias: [],
-    component: () => import('./_nuxt/cart.9c4141e7.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/cart.e62f536c.mjs').then((m) => m.default || m)
   },
   {
     name: "locale",
@@ -4433,7 +4433,7 @@ const routes = [
     children: [],
     meta: meta$6,
     alias: [],
-    component: () => import('./_nuxt/index.eee10033.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/index.1d7437e8.mjs').then((m) => m.default || m)
   },
   {
     name: "locale-pages-about_us",
@@ -4442,7 +4442,7 @@ const routes = [
     children: [],
     meta: meta$5,
     alias: [],
-    component: () => import('./_nuxt/about_us.7f8fd36b.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/about_us.b5b9c04d.mjs').then((m) => m.default || m)
   },
   {
     name: "locale-pages-contacts",
@@ -4451,7 +4451,7 @@ const routes = [
     children: [],
     meta: meta$4,
     alias: [],
-    component: () => import('./_nuxt/contacts.791dadf7.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/contacts.b8f12907.mjs').then((m) => m.default || m)
   },
   {
     name: "locale-pages-delivery",
@@ -4460,7 +4460,7 @@ const routes = [
     children: [],
     meta: meta$3,
     alias: [],
-    component: () => import('./_nuxt/delivery.a9ada48a.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/delivery.70f656d9.mjs').then((m) => m.default || m)
   },
   {
     name: "locale-product-productId",
@@ -4469,7 +4469,7 @@ const routes = [
     children: [],
     meta: meta$2,
     alias: [],
-    component: () => import('./_nuxt/_productId_.c1983ad0.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/_productId_.d3374b95.mjs').then((m) => m.default || m)
   },
   {
     name: "locale-search-request",
@@ -4478,7 +4478,7 @@ const routes = [
     children: [],
     meta: meta$1,
     alias: [],
-    component: () => import('./_nuxt/_request_.bdb958f5.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/_request_.f1bf9bb0.mjs').then((m) => m.default || m)
   },
   {
     name: "index",
@@ -4487,7 +4487,7 @@ const routes = [
     children: [],
     meta,
     alias: [],
-    component: () => import('./_nuxt/index.bc5bf385.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/index.615e2142.mjs').then((m) => m.default || m)
   }
 ];
 const configRouterOptions = {};
@@ -4496,10 +4496,10 @@ const routerOptions = {
 };
 const globalMiddleware = [];
 const namedMiddleware = {
-  "admin-only": () => import('./_nuxt/admin-only.82530ec0.mjs'),
-  "guest-only": () => import('./_nuxt/guest-only.c4bc7563.mjs'),
+  "admin-only": () => import('./_nuxt/admin-only.fbbd6797.mjs'),
+  "guest-only": () => import('./_nuxt/guest-only.92d6d30e.mjs'),
   redirect: () => import('./_nuxt/redirect.56e10c5c.mjs'),
-  "user-only": () => import('./_nuxt/user-only.a9aaf907.mjs')
+  "user-only": () => import('./_nuxt/user-only.21c7aa73.mjs')
 };
 const node_modules_nuxt_dist_pages_runtime_router_mjs_qNv5Ky2ZmB = defineNuxtPlugin(async (nuxtApp) => {
   let __temp, __restore;
@@ -6063,7 +6063,7 @@ const _sfc_main$d = {
   __name: "nuxt-root",
   __ssrInlineRender: true,
   setup(__props) {
-    const ErrorComponent = vue_cjs_prod.defineAsyncComponent(() => import('./_nuxt/error-component.eefea181.mjs'));
+    const ErrorComponent = vue_cjs_prod.defineAsyncComponent(() => import('./_nuxt/error-component.7e1951ff.mjs'));
     const nuxtApp = useNuxtApp();
     vue_cjs_prod.provide("_route", useRoute());
     nuxtApp.hooks.callHookWith((hooks) => hooks.map((hook) => hook()), "vue:setup");
@@ -18037,10 +18037,10 @@ const _sfc_main$3 = /* @__PURE__ */ vue_cjs_prod.defineComponent({
   __name: "top",
   __ssrInlineRender: true,
   setup(__props) {
-    useAuth();
+    const { logout: logout2 } = useAuth();
     const route = useRoute();
     useRouter();
-    useAuthUser();
+    const currentuser = useAuthUser();
     const isAdmin = useAdmin();
     const isOpen = vue_cjs_prod.ref(false);
     const showModal = vue_cjs_prod.ref(false);
@@ -18048,9 +18048,16 @@ const _sfc_main$3 = /* @__PURE__ */ vue_cjs_prod.defineComponent({
     const openSignIn = () => {
       showModal.value = !showModal.value;
     };
+    const openCockpit = async () => {
+      document.body.classList.add("overflow-hidden");
+      isOpen.value = true;
+    };
     const closeCockpit = () => {
       document.body.classList.remove("overflow-hidden");
       isOpen.value = false;
+    };
+    const clikLogout = async () => {
+      await logout2();
     };
     return (_ctx, _push, _parent, _attrs) => {
       const _component_NuxtLink = __nuxt_component_0$1;
@@ -18117,6 +18124,47 @@ const _sfc_main$3 = /* @__PURE__ */ vue_cjs_prod.defineComponent({
         _: 1
       }, _parent));
       _push(`</div><div class="block-lang text-xs text-slate-100">`);
+      _push(serverRenderer.exports.ssrRenderComponent(_component_client_only, null, {
+        default: vue_cjs_prod.withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            if (!vue_cjs_prod.unref(currentuser)) {
+              _push2(`<button type="button" class="py-1 px-2 hover:text-slate-100"${_scopeId}>${serverRenderer.exports.ssrInterpolate(_ctx.$t("come_in"))}</button>`);
+            } else {
+              _push2(`<!--[-->`);
+              if (vue_cjs_prod.unref(isAdmin)) {
+                _push2(`<button type="button" class="py-1 px-2"${_scopeId}><i class="pi pi-cog"${_scopeId}></i></button>`);
+              } else {
+                _push2(`<!---->`);
+              }
+              _push2(`<button type="button" class="py-1 px-2 hover:text-slate-100"${_scopeId}>${serverRenderer.exports.ssrInterpolate(_ctx.$t("logout"))}</button><!--]-->`);
+            }
+          } else {
+            return [
+              !vue_cjs_prod.unref(currentuser) ? (vue_cjs_prod.openBlock(), vue_cjs_prod.createBlock("button", {
+                key: 0,
+                type: "button",
+                class: "py-1 px-2 hover:text-slate-100",
+                onClick: ($event) => openSignIn()
+              }, vue_cjs_prod.toDisplayString(_ctx.$t("come_in")), 9, ["onClick"])) : (vue_cjs_prod.openBlock(), vue_cjs_prod.createBlock(vue_cjs_prod.Fragment, { key: 1 }, [
+                vue_cjs_prod.unref(isAdmin) ? (vue_cjs_prod.openBlock(), vue_cjs_prod.createBlock("button", {
+                  key: 0,
+                  type: "button",
+                  class: "py-1 px-2",
+                  onClick: vue_cjs_prod.withModifiers(($event) => openCockpit(), ["prevent"])
+                }, [
+                  vue_cjs_prod.createVNode("i", { class: "pi pi-cog" })
+                ], 8, ["onClick"])) : vue_cjs_prod.createCommentVNode("", true),
+                vue_cjs_prod.createVNode("button", {
+                  type: "button",
+                  class: "py-1 px-2 hover:text-slate-100",
+                  onClick: ($event) => clikLogout()
+                }, vue_cjs_prod.toDisplayString(_ctx.$t("logout")), 9, ["onClick"])
+              ], 64))
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
       _push(serverRenderer.exports.ssrRenderComponent(_component_NuxtLink, {
         class: "py-1 px-2 hover:text-slate-100 active:bg-slate-100",
         to: { params: { locale: "uk" } }

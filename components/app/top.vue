@@ -7,7 +7,7 @@
       <NuxtLink class="py-1 px-2 hover:text-slate-900" :to="`/${$route.params.locale}/pages/contacts`">{{ $t('pages.contacts') }}</NuxtLink>
     </div>
     <div class="block-lang text-xs text-slate-100">
-      <!-- <client-only>
+      <client-only>
       <template v-if="!currentuser">
         <button type="button" class="py-1 px-2 hover:text-slate-100" @click="openSignIn()">{{ $t('come_in') }}</button>
       </template>
@@ -15,7 +15,7 @@
         <button type="button" class="py-1 px-2" v-if="isAdmin" @click.prevent="openCockpit()"><i class="pi pi-cog"></i></button>
         <button type="button" class="py-1 px-2 hover:text-slate-100" @click="clikLogout()">{{ $t('logout') }}</button>
       </template>
-      </client-only> -->
+      </client-only>
       <NuxtLink class="py-1 px-2 hover:text-slate-100 active:bg-slate-100" :to="{params: {locale: 'uk'}}">UK</NuxtLink>
       <NuxtLink class="py-1 px-2 hover:text-slate-100" :to="{params: {locale: 'ru'}}">RU</NuxtLink>
     </div>
