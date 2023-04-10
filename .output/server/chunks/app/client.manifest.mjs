@@ -1,15 +1,15 @@
 const client_manifest = {
-  "node_modules/primeicons/fonts/primeicons.eot": {
-    "resourceType": "font",
-    "mimeType": "font/eot",
-    "file": "primeicons.c9eaf535.eot",
-    "src": "node_modules/primeicons/fonts/primeicons.eot"
-  },
   "node_modules/primevue/resources/images/color.png": {
     "resourceType": "image",
     "mimeType": "image/png",
     "file": "color.473bc8ca.png",
     "src": "node_modules/primevue/resources/images/color.png"
+  },
+  "node_modules/primeicons/fonts/primeicons.eot": {
+    "resourceType": "font",
+    "mimeType": "font/eot",
+    "file": "primeicons.c9eaf535.eot",
+    "src": "node_modules/primeicons/fonts/primeicons.eot"
   },
   "node_modules/primeicons/fonts/primeicons.ttf": {
     "resourceType": "font",
@@ -324,15 +324,15 @@ const client_manifest = {
     "file": "[request].25cb51f8.css",
     "src": "pages/[locale]/search/[request].css"
   },
-  "node_modules/@nuxt/ui-templates/dist/templates/error-500.css": {
-    "resourceType": "style",
-    "file": "error-500.08851880.css",
-    "src": "node_modules/@nuxt/ui-templates/dist/templates/error-500.css"
-  },
   "node_modules/@nuxt/ui-templates/dist/templates/error-404.css": {
     "resourceType": "style",
     "file": "error-404.7729cee9.css",
     "src": "node_modules/@nuxt/ui-templates/dist/templates/error-404.css"
+  },
+  "node_modules/@nuxt/ui-templates/dist/templates/error-500.css": {
+    "resourceType": "style",
+    "file": "error-500.08851880.css",
+    "src": "node_modules/@nuxt/ui-templates/dist/templates/error-500.css"
   },
   "node_modules/nuxt/dist/app/entry.css": {
     "resourceType": "style",
