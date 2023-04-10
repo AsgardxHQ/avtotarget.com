@@ -4381,7 +4381,7 @@ const _export_sfc = (sfc, props) => {
   return target;
 };
 const _sfc_main$e = {};
-function _sfc_ssrRender$2(_ctx, _push, _parent, _attrs) {
+function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs) {
   _push(`<div${serverRenderer.exports.ssrRenderAttrs(_attrs)}><div class="slide flex justify-center items-center text-gray-400"><span>No image</span></div></div>`);
 }
 const _sfc_setup$e = _sfc_main$e.setup;
@@ -4390,7 +4390,7 @@ _sfc_main$e.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/app/slider.vue");
   return _sfc_setup$e ? _sfc_setup$e(props, ctx) : void 0;
 };
-const Slider = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["ssrRender", _sfc_ssrRender$2]]);
+const Slider = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["ssrRender", _sfc_ssrRender$1]]);
 const meta$6 = void 0;
 const meta$5 = void 0;
 const meta$4 = void 0;
@@ -4406,7 +4406,7 @@ const routes = [
     children: [],
     meta: meta$9,
     alias: [],
-    component: () => import('./_nuxt/page-_page_.b0616872.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/page-_page_.f530f64d.mjs').then((m) => m.default || m)
   },
   {
     name: "locale-category-page-page",
@@ -4415,7 +4415,7 @@ const routes = [
     children: [],
     meta: meta$8,
     alias: [],
-    component: () => import('./_nuxt/page-_page_.05875d20.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/page-_page_.ad464551.mjs').then((m) => m.default || m)
   },
   {
     name: "locale-cart",
@@ -4424,7 +4424,7 @@ const routes = [
     children: [],
     meta: meta$7,
     alias: [],
-    component: () => import('./_nuxt/cart.f8bbb67c.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/cart.e62f536c.mjs').then((m) => m.default || m)
   },
   {
     name: "locale",
@@ -4433,7 +4433,7 @@ const routes = [
     children: [],
     meta: meta$6,
     alias: [],
-    component: () => import('./_nuxt/index.756e0482.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/index.1d7437e8.mjs').then((m) => m.default || m)
   },
   {
     name: "locale-pages-about_us",
@@ -4442,7 +4442,7 @@ const routes = [
     children: [],
     meta: meta$5,
     alias: [],
-    component: () => import('./_nuxt/about_us.95605dce.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/about_us.b5b9c04d.mjs').then((m) => m.default || m)
   },
   {
     name: "locale-pages-contacts",
@@ -4451,7 +4451,7 @@ const routes = [
     children: [],
     meta: meta$4,
     alias: [],
-    component: () => import('./_nuxt/contacts.53945e66.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/contacts.b8f12907.mjs').then((m) => m.default || m)
   },
   {
     name: "locale-pages-delivery",
@@ -4460,7 +4460,7 @@ const routes = [
     children: [],
     meta: meta$3,
     alias: [],
-    component: () => import('./_nuxt/delivery.1e0f7ccf.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/delivery.70f656d9.mjs').then((m) => m.default || m)
   },
   {
     name: "locale-product-productId",
@@ -4469,7 +4469,7 @@ const routes = [
     children: [],
     meta: meta$2,
     alias: [],
-    component: () => import('./_nuxt/_productId_.554509cc.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/_productId_.d3374b95.mjs').then((m) => m.default || m)
   },
   {
     name: "locale-search-request",
@@ -4478,7 +4478,7 @@ const routes = [
     children: [],
     meta: meta$1,
     alias: [],
-    component: () => import('./_nuxt/_request_.90ad14f2.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/_request_.f1bf9bb0.mjs').then((m) => m.default || m)
   },
   {
     name: "index",
@@ -4487,7 +4487,7 @@ const routes = [
     children: [],
     meta,
     alias: [],
-    component: () => import('./_nuxt/index.1a2606d7.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/index.615e2142.mjs').then((m) => m.default || m)
   }
 ];
 const configRouterOptions = {};
@@ -4496,10 +4496,10 @@ const routerOptions = {
 };
 const globalMiddleware = [];
 const namedMiddleware = {
-  "admin-only": () => import('./_nuxt/admin-only.3bb82397.mjs'),
-  "guest-only": () => import('./_nuxt/guest-only.ca4f28a6.mjs'),
+  "admin-only": () => import('./_nuxt/admin-only.fbbd6797.mjs'),
+  "guest-only": () => import('./_nuxt/guest-only.92d6d30e.mjs'),
   redirect: () => import('./_nuxt/redirect.56e10c5c.mjs'),
-  "user-only": () => import('./_nuxt/user-only.7d7a5de6.mjs')
+  "user-only": () => import('./_nuxt/user-only.21c7aa73.mjs')
 };
 const node_modules_nuxt_dist_pages_runtime_router_mjs_qNv5Ky2ZmB = defineNuxtPlugin(async (nuxtApp) => {
   let __temp, __restore;
@@ -6063,7 +6063,7 @@ const _sfc_main$d = {
   __name: "nuxt-root",
   __ssrInlineRender: true,
   setup(__props) {
-    const ErrorComponent = vue_cjs_prod.defineAsyncComponent(() => import('./_nuxt/error-component.ff4b4abd.mjs'));
+    const ErrorComponent = vue_cjs_prod.defineAsyncComponent(() => import('./_nuxt/error-component.7e1951ff.mjs'));
     const nuxtApp = useNuxtApp();
     vue_cjs_prod.provide("_route", useRoute());
     nuxtApp.hooks.callHookWith((hooks) => hooks.map((hook) => hook()), "vue:setup");
@@ -18357,17 +18357,84 @@ _sfc_main$2.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/app/NuxtLoadingBar.vue");
   return _sfc_setup$2 ? _sfc_setup$2(props, ctx) : void 0;
 };
-const _sfc_main$1 = {};
-function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs) {
-  _push(`<footer${serverRenderer.exports.ssrRenderAttrs(vue_cjs_prod.mergeProps({ class: "h-64 flex justify-center items-center bg-slate-500 mt-8" }, _attrs))}><span>Footer</span></footer>`);
-}
+const _sfc_main$1 = /* @__PURE__ */ vue_cjs_prod.defineComponent({
+  __name: "footer",
+  __ssrInlineRender: true,
+  setup(__props) {
+    const year = new Date().getFullYear();
+    return (_ctx, _push, _parent, _attrs) => {
+      const _component_NuxtLink = __nuxt_component_0$1;
+      _push(`<footer${serverRenderer.exports.ssrRenderAttrs(vue_cjs_prod.mergeProps({ class: "bg-slate-500 mt-8" }, _attrs))}><div class="w-full py-4 flex item-center justify-center text-xs text-slate-100">`);
+      _push(serverRenderer.exports.ssrRenderComponent(_component_NuxtLink, {
+        class: "py-1 px-2 text-lg hover:text-slate-900",
+        to: `/${_ctx.$route.params.locale}`
+      }, {
+        default: vue_cjs_prod.withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`${serverRenderer.exports.ssrInterpolate(_ctx.$t("mainPage"))}`);
+          } else {
+            return [
+              vue_cjs_prod.createTextVNode(vue_cjs_prod.toDisplayString(_ctx.$t("mainPage")), 1)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(serverRenderer.exports.ssrRenderComponent(_component_NuxtLink, {
+        class: "py-1 px-2 text-lg hover:text-slate-900",
+        to: `/${_ctx.$route.params.locale}/pages/about_us`
+      }, {
+        default: vue_cjs_prod.withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`${serverRenderer.exports.ssrInterpolate(_ctx.$t("pages.about_us"))}`);
+          } else {
+            return [
+              vue_cjs_prod.createTextVNode(vue_cjs_prod.toDisplayString(_ctx.$t("pages.about_us")), 1)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(serverRenderer.exports.ssrRenderComponent(_component_NuxtLink, {
+        class: "py-1 px-2 text-lg hover:text-slate-900",
+        to: `/${_ctx.$route.params.locale}/pages/delivery`
+      }, {
+        default: vue_cjs_prod.withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`${serverRenderer.exports.ssrInterpolate(_ctx.$t("pages.delivery"))}`);
+          } else {
+            return [
+              vue_cjs_prod.createTextVNode(vue_cjs_prod.toDisplayString(_ctx.$t("pages.delivery")), 1)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(serverRenderer.exports.ssrRenderComponent(_component_NuxtLink, {
+        class: "py-1 px-2 text-lg hover:text-slate-900",
+        to: `/${_ctx.$route.params.locale}/pages/contacts`
+      }, {
+        default: vue_cjs_prod.withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`${serverRenderer.exports.ssrInterpolate(_ctx.$t("pages.contacts"))}`);
+          } else {
+            return [
+              vue_cjs_prod.createTextVNode(vue_cjs_prod.toDisplayString(_ctx.$t("pages.contacts")), 1)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`</div><div class="w-full flex justify-center text-lg pb-4">\xA9 ${serverRenderer.exports.ssrInterpolate(vue_cjs_prod.unref(year))} autotarget.com. ALL RIGHTS RESERVED.</div></footer>`);
+    };
+  }
+});
 const _sfc_setup$1 = _sfc_main$1.setup;
 _sfc_main$1.setup = (props, ctx) => {
   const ssrContext = vue_cjs_prod.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/app/footer.vue");
   return _sfc_setup$1 ? _sfc_setup$1(props, ctx) : void 0;
 };
-const Footer = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["ssrRender", _sfc_ssrRender$1]]);
 const _sfc_main = {
   data() {
     return {};
@@ -18382,7 +18449,7 @@ const _sfc_main = {
   components: {
     Top: _sfc_main$3,
     NuxtLoadingBar: _sfc_main$2,
-    Footer
+    Footer: _sfc_main$1
   },
   created() {
     if (!this.$route.params.locale) {
