@@ -1,11 +1,11 @@
 {
-  "node_modules/primeicons/fonts/primeicons.eot": {
-    "file": "_nuxt/primeicons.c9eaf535.eot",
-    "src": "node_modules/primeicons/fonts/primeicons.eot"
-  },
   "node_modules/primevue/resources/images/color.png": {
     "file": "_nuxt/color.473bc8ca.png",
     "src": "node_modules/primevue/resources/images/color.png"
+  },
+  "node_modules/primeicons/fonts/primeicons.eot": {
+    "file": "_nuxt/primeicons.c9eaf535.eot",
+    "src": "node_modules/primeicons/fonts/primeicons.eot"
   },
   "node_modules/primeicons/fonts/primeicons.ttf": {
     "file": "_nuxt/primeicons.788dba0a.ttf",
@@ -20,7 +20,7 @@
     "src": "node_modules/primeicons/fonts/primeicons.svg"
   },
   "node_modules/nuxt/dist/app/entry.mjs": {
-    "file": "_nuxt/entry.7b8277be.mjs",
+    "file": "_nuxt/entry.3cb7d54a.mjs",
     "src": "node_modules/nuxt/dist/app/entry.mjs",
     "isEntry": true,
     "dynamicImports": [
@@ -41,7 +41,7 @@
       "virtual:nuxt:/Users/mikhailchernysh/works/avtotarget/.nuxt/error-component.mjs"
     ],
     "css": [
-      "_nuxt/entry.8c6fede6.css"
+      "_nuxt/entry.ae766a7e.css"
     ],
     "assets": [
       "_nuxt/color.473bc8ca.png",
@@ -52,7 +52,7 @@
     ]
   },
   "virtual:nuxt:/Users/mikhailchernysh/works/avtotarget/.nuxt/error-component.mjs": {
-    "file": "_nuxt/error-component.85255a0e.mjs",
+    "file": "_nuxt/error-component.d5f80038.mjs",
     "src": "virtual:nuxt:/Users/mikhailchernysh/works/avtotarget/.nuxt/error-component.mjs",
     "isDynamicEntry": true,
     "imports": [
@@ -64,49 +64,49 @@
     ]
   },
   "pages/[locale]/[category]/[subcategory]/page-[page].vue": {
-    "file": "_nuxt/page-_page_.380e0b43.mjs",
+    "file": "_nuxt/page-_page_.56add857.mjs",
     "src": "pages/[locale]/[category]/[subcategory]/page-[page].vue",
     "isDynamicEntry": true,
     "imports": [
-      "_products.vue_vue_type_script_setup_true_lang.e447514c.mjs",
+      "_products.vue_vue_type_script_setup_true_lang.cee37c93.mjs",
       "node_modules/nuxt/dist/app/entry.mjs",
-      "_filter.vue_vue_type_script_setup_true_lang.40a870d3.mjs",
-      "_item.vue_vue_type_script_setup_true_lang.38809305.mjs"
+      "_filter.vue_vue_type_script_setup_true_lang.f590430c.mjs",
+      "_item.vue_vue_type_script_setup_true_lang.dd6007de.mjs"
     ]
   },
-  "_products.vue_vue_type_script_setup_true_lang.e447514c.mjs": {
-    "file": "_nuxt/products.vue_vue_type_script_setup_true_lang.e447514c.mjs",
+  "_products.vue_vue_type_script_setup_true_lang.cee37c93.mjs": {
+    "file": "_nuxt/products.vue_vue_type_script_setup_true_lang.cee37c93.mjs",
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs",
-      "_filter.vue_vue_type_script_setup_true_lang.40a870d3.mjs",
-      "_item.vue_vue_type_script_setup_true_lang.38809305.mjs"
+      "_filter.vue_vue_type_script_setup_true_lang.f590430c.mjs",
+      "_item.vue_vue_type_script_setup_true_lang.dd6007de.mjs"
     ]
   },
-  "_filter.vue_vue_type_script_setup_true_lang.40a870d3.mjs": {
-    "file": "_nuxt/filter.vue_vue_type_script_setup_true_lang.40a870d3.mjs",
+  "_filter.vue_vue_type_script_setup_true_lang.f590430c.mjs": {
+    "file": "_nuxt/filter.vue_vue_type_script_setup_true_lang.f590430c.mjs",
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs"
     ]
   },
-  "_item.vue_vue_type_script_setup_true_lang.38809305.mjs": {
-    "file": "_nuxt/item.vue_vue_type_script_setup_true_lang.38809305.mjs",
+  "_item.vue_vue_type_script_setup_true_lang.dd6007de.mjs": {
+    "file": "_nuxt/item.vue_vue_type_script_setup_true_lang.dd6007de.mjs",
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs"
     ]
   },
   "pages/[locale]/[category]/page-[page].vue": {
-    "file": "_nuxt/page-_page_.861c2512.mjs",
+    "file": "_nuxt/page-_page_.06ae4a47.mjs",
     "src": "pages/[locale]/[category]/page-[page].vue",
     "isDynamicEntry": true,
     "imports": [
-      "_products.vue_vue_type_script_setup_true_lang.e447514c.mjs",
+      "_products.vue_vue_type_script_setup_true_lang.cee37c93.mjs",
       "node_modules/nuxt/dist/app/entry.mjs",
-      "_filter.vue_vue_type_script_setup_true_lang.40a870d3.mjs",
-      "_item.vue_vue_type_script_setup_true_lang.38809305.mjs"
+      "_filter.vue_vue_type_script_setup_true_lang.f590430c.mjs",
+      "_item.vue_vue_type_script_setup_true_lang.dd6007de.mjs"
     ]
   },
   "pages/[locale]/cart.vue": {
-    "file": "_nuxt/cart.8e120140.mjs",
+    "file": "_nuxt/cart.88e58840.mjs",
     "src": "pages/[locale]/cart.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -114,17 +114,17 @@
     ]
   },
   "pages/[locale]/index.vue": {
-    "file": "_nuxt/index.4b5be6e2.mjs",
+    "file": "_nuxt/index.4b52dee2.mjs",
     "src": "pages/[locale]/index.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs",
-      "_filter.vue_vue_type_script_setup_true_lang.40a870d3.mjs",
-      "_item.vue_vue_type_script_setup_true_lang.38809305.mjs"
+      "_filter.vue_vue_type_script_setup_true_lang.f590430c.mjs",
+      "_item.vue_vue_type_script_setup_true_lang.dd6007de.mjs"
     ]
   },
   "pages/[locale]/pages/about_us.vue": {
-    "file": "_nuxt/about_us.24f9cb0c.mjs",
+    "file": "_nuxt/about_us.76d8aa4b.mjs",
     "src": "pages/[locale]/pages/about_us.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -132,7 +132,7 @@
     ]
   },
   "pages/[locale]/pages/contacts.vue": {
-    "file": "_nuxt/contacts.05c47a09.mjs",
+    "file": "_nuxt/contacts.0c43354a.mjs",
     "src": "pages/[locale]/pages/contacts.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -140,7 +140,7 @@
     ]
   },
   "pages/[locale]/pages/delivery.vue": {
-    "file": "_nuxt/delivery.cc653a7e.mjs",
+    "file": "_nuxt/delivery.9d6e1802.mjs",
     "src": "pages/[locale]/pages/delivery.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -148,7 +148,7 @@
     ]
   },
   "pages/[locale]/product/[productId].vue": {
-    "file": "_nuxt/_productId_.1a9d0c93.mjs",
+    "file": "_nuxt/_productId_.c4263ca7.mjs",
     "src": "pages/[locale]/product/[productId].vue",
     "isDynamicEntry": true,
     "imports": [
@@ -156,19 +156,19 @@
     ]
   },
   "pages/[locale]/search/[request].vue": {
-    "file": "_nuxt/_request_.10b691f0.mjs",
+    "file": "_nuxt/_request_.2cbada9f.mjs",
     "src": "pages/[locale]/search/[request].vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs",
-      "_item.vue_vue_type_script_setup_true_lang.38809305.mjs"
+      "_item.vue_vue_type_script_setup_true_lang.dd6007de.mjs"
     ],
     "css": [
       "_nuxt/[request].25cb51f8.css"
     ]
   },
   "pages/index.vue": {
-    "file": "_nuxt/index.d610005b.mjs",
+    "file": "_nuxt/index.1a3fbe25.mjs",
     "src": "pages/index.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -176,7 +176,7 @@
     ]
   },
   "middleware/admin-only.ts": {
-    "file": "_nuxt/admin-only.8c9d180a.mjs",
+    "file": "_nuxt/admin-only.8d365f7d.mjs",
     "src": "middleware/admin-only.ts",
     "isDynamicEntry": true,
     "imports": [
@@ -184,7 +184,7 @@
     ]
   },
   "middleware/guest-only.ts": {
-    "file": "_nuxt/guest-only.c11a60c8.mjs",
+    "file": "_nuxt/guest-only.1f2ad366.mjs",
     "src": "middleware/guest-only.ts",
     "isDynamicEntry": true,
     "imports": [
@@ -197,7 +197,7 @@
     "isDynamicEntry": true
   },
   "middleware/user-only.ts": {
-    "file": "_nuxt/user-only.1259baa2.mjs",
+    "file": "_nuxt/user-only.a00b503f.mjs",
     "src": "middleware/user-only.ts",
     "isDynamicEntry": true,
     "imports": [
@@ -205,7 +205,7 @@
     ]
   },
   "node_modules/@nuxt/ui-templates/dist/templates/error-404.vue": {
-    "file": "_nuxt/error-404.cb80a218.mjs",
+    "file": "_nuxt/error-404.09d8d456.mjs",
     "src": "node_modules/@nuxt/ui-templates/dist/templates/error-404.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -216,7 +216,7 @@
     ]
   },
   "node_modules/@nuxt/ui-templates/dist/templates/error-500.vue": {
-    "file": "_nuxt/error-500.ad80dc10.mjs",
+    "file": "_nuxt/error-500.08a053cd.mjs",
     "src": "node_modules/@nuxt/ui-templates/dist/templates/error-500.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -239,7 +239,7 @@
     "src": "node_modules/@nuxt/ui-templates/dist/templates/error-404.css"
   },
   "node_modules/nuxt/dist/app/entry.css": {
-    "file": "_nuxt/entry.8c6fede6.css",
+    "file": "_nuxt/entry.ae766a7e.css",
     "src": "node_modules/nuxt/dist/app/entry.css"
   }
 }

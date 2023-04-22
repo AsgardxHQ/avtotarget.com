@@ -94,7 +94,7 @@ const registration = async () => {
 };
 const sign_in = async () => {
   const { email, password } = form.value;
-  const user = await useAuth().login(email, password, null);
+  const user = null
   if(user) {
     openSignIn();
   }

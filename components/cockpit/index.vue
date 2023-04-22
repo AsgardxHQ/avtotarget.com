@@ -92,7 +92,7 @@ const menu:any = [
   {name: 'Заказы', url:'orders'}
 ]
 
-const user = useAuthUser();
+const user = null;
 const showComponent = ref({
   name: 'Главная',
   url: 'main',
