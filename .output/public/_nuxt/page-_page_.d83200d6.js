@@ -1,0 +1,1 @@
+import{_ as e}from"./products.vue.2f801fa3.js";import{a as o,o as a,c as r}from"./entry.d2fb6768.js";import"./filter.vue.09099431.js";import"./item.vue.526a41c7.js";const i=o({__name:"page-[page]",setup(t){return(p,_)=>(a(),r(e))}});export{i as default};

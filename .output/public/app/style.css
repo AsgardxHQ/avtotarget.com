@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.main-page .container {
+  min-width: 100%;
+}
+.main-page {
+  @apply my-5;
+}
+.main-page .container, .main-page .wrapper {
+  @apply flex;
+  @apply w-full;
+}
+.main-page .select-block {
+  @apply w-1/4;
+}
+.main-page .filter-btn {
+  @apply  w-1/6;
+}
+.product-page .filter-btn {
+  padding: 0 25px;
+}
+.cart-notice {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgb(43, 156, 48);
+  border-radius: 10px;
+  z-index: 1001;
+  padding: 15px 20px;
+  color: #fff;
+  @apply shadow-md;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
