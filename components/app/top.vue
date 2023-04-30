@@ -48,11 +48,10 @@
   import Cart from "@/components/app/cart.vue";
   import Auth from "@/components/app/auth.vue";
   import Cockpit from "@/components/cockpit/index.vue";
-  const { logout } = useAuth();
   const route = useRoute();
   const router = useRouter();
-  const currentuser = useAuthUser();
-  const isAdmin = useAdmin();
+  const currentuser = false;
+  const isAdmin = false;
   const isOpen = ref(false);
   const showModal = ref(false);
   const searchText = ref(route.params.request || '');
@@ -75,7 +74,7 @@
     isOpen.value = false;
   }
   const clikLogout = async () => {
-    await logout()
+    // await logout()
   }
 </script>
 

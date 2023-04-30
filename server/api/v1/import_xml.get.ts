@@ -1,5 +1,5 @@
 import { readdir, readFile } from "fs/promises";
-import { DOMParser } from '@xmldom/xmldom'
+// import { DOMParser } from '@xmldom/xmldom'
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 

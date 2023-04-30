@@ -60,7 +60,10 @@
 
 <script lang="ts" setup>
 const { openSignIn } = defineProps({
-  openSignIn: Function
+  openSignIn: {
+    type: Function,
+    required: true
+  }
 });
 const typeAuth = ref(0);
 const changeTypeAuth = (type: number) => {
@@ -68,9 +71,9 @@ const changeTypeAuth = (type: number) => {
 };
 
 const error = ref({
-  email: null,
-  password: null,
-  password_confirm: null,
+  email: false,
+  password: false,
+  password_confirm: false,
 
 });
 const form = ref({
@@ -94,7 +97,7 @@ const registration = async () => {
 };
 const sign_in = async () => {
   const { email, password } = form.value;
-  const user = null
+  const user = await useFetch('/api/v1/auth/sign_in', {method: 'POST', body: {email, password}});
   if(user) {
     openSignIn();
   }

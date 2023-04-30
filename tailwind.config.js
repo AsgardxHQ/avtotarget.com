@@ -11,17 +11,6 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [
-    require("@tailwindcss/forms")({
-      strategy: 'base', // only generate global styles
-      strategy: 'class', // only generate classes
-    }),
-  ],
+  plugins: [],
 }
 
-import { Config } from 'tailwindcss'
-export default <Config> {
-  theme: {
-    extend: {}
-  },
-}

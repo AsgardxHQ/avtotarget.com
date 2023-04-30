@@ -1,11 +1,10 @@
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
-import { getUsers } from '~~/server/models/user'
 
 export default defineEventHandler(async (event) => {
   const body = await useBody(event);
-  const user:any = await getUsers();
+  const user:any = [{}];
   const userId = user[0].id ? user[0].id : '';
   body.user_id = userId;
   const { city, delivery, description, email, fullname, phone, post_office } = body;

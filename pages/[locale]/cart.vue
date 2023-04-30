@@ -107,7 +107,7 @@ import type { Item } from '~~/types';
 const route = useRoute();
 const router = useRouter();
 const storeCart = cartStore();
-const currentuser = useAuthUser();
+const currentuser = null;
 
 const cart:any = computed(() => {
   return storeCart.cart;

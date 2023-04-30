@@ -1,6 +1,6 @@
 import uk from '@/locales/uk.json';
 import ru from '@/locales/ru.json';
-const localStrings = {
+const localStrings:any = {
   uk, ru
 }
 
@@ -8,7 +8,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   return {
     provide: {
       t: (key: string) => {
-        const lang = localStrings[nuxtApp._route.params.locale];
+        const lang = localStrings[(nuxtApp._route.params.locale as string)];
         if(!nuxtApp._route.params.locale || !lang) return null;
         if(key.indexOf('.') !== -1) {
           const [p1, p2] = key.split('.');
