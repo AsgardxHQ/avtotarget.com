@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   sourcemap: {
     client: false,
-    server: false,
+    server: true,
   },
   build: {
     transpile: ['primevue']
