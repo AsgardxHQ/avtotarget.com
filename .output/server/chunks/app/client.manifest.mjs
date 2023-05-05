@@ -183,7 +183,7 @@ const client_manifest = {
   "pages/[locale]/[category]/[subcategory]/page-[page].vue": {
     "resourceType": "script",
     "module": true,
-    "file": "page-_page_.dcf08012.js",
+    "file": "page-_page_.d83200d6.js",
     "imports": [
       "_products.vue.2f801fa3.js",
       "node_modules/nuxt/dist/app/entry.js",
@@ -196,7 +196,7 @@ const client_manifest = {
   "pages/[locale]/[category]/page-[page].vue": {
     "resourceType": "script",
     "module": true,
-    "file": "page-_page_.d83200d6.js",
+    "file": "page-_page_.dcf08012.js",
     "imports": [
       "_products.vue.2f801fa3.js",
       "node_modules/nuxt/dist/app/entry.js",
