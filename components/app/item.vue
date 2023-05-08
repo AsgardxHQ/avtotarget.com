@@ -19,13 +19,10 @@
         :to="`/${$route.params.locale}/product/${item.id}`"
         class="block mb-2"
       >
-        <!--${item.images[0]}-->
-        <!-- <ClientOnly> -->
         <img 
           class="w-full h-40 object-cover" 
           v-if="item.images && item.images.length > 0" 
-          :src="`https://cdn.autotarget.com.ua/products/${item.images[0]}`"> <!--${getImage(item.images[0])}-->
-        <!-- </ClientOnly> -->
+          src="/images/no-image.jpeg"> <!-- `https://cdn.autotarget.com.ua/products/${item.images[0]}` -->
       </NuxtLink>
       <NuxtLink 
         :title="item[`name_${$route.params.locale}`]"
@@ -62,7 +59,7 @@ import { cartStore } from '@/stores/cart';
 const { items } = defineProps({
   items: Array<any>,
 });
-const cartNotice = ref(null);
+const cartNotice = ref();
 const addToCart = (id:number) => {
   cartStore().set(id, 1);
   cartNotice.value.style.opacity = 1;
