@@ -11,7 +11,8 @@
       <ul>
         <li v-for="item in cart" :key="item.id" class="flex items-center p-2 text-xs relative border-b">
           <NuxtLink class="w-1/4" :to="`/${$route.params.locale}/product/${item.id}`" :title="item[`name_${$route.params.locale}`]">
-            <img v-if="item.images && item.images.length > 0" :src="`https://cdn.autotarget.com.ua/products/${item.images[0]}`">
+            <!-- <img v-if="item.images && item.images.length > 0" :src="`https://cdn.autotarget.com.ua/products/${item.images[0]}`"> -->
+            <img src="/images/no-image.jpeg">
           </NuxtLink>
           <div class="w-2/4 px-2">
             <NuxtLink :to="`/${$route.params.locale}/product/${item.id}`" :title="item[`name_${$route.params.locale}`]">

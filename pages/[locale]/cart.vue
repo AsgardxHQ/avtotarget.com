@@ -8,7 +8,8 @@
         <div class="w-full px-4">
           <div class="w-full flex mb-2 border-t-2 p-2 relative" v-if="cart.length" v-for="item in cart" :key="item.id">
             <NuxtLink class="w-4/12 pr-2" :to="`/${route.params.locale}/product/${item.id}`">
-              <img  v-if="item.images && item.images.length > 0" :src="`https://cdn.autotarget.com.ua/products/${item.images[0]}`">
+              <!-- <img  v-if="item.images && item.images.length > 0" :src="`https://cdn.autotarget.com.ua/products/${item.images[0]}`"> -->
+              <img src="/images/no-image.jpeg">
             </NuxtLink>
             <div class="w-full mr-6">
               <NuxtLink :to="`/${route.params.locale}/product/${item.id}`" class="text-md leading-5 text-sky-800">{{item[`name_${route.params.locale}`]}}</NuxtLink>
