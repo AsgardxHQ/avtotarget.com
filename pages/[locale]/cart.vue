@@ -103,7 +103,6 @@
 </template>
 <script setup lang="ts">
 import { cartStore } from '~~/stores/cart';
-import type { Item } from '~~/types';
 const route = useRoute();
 const router = useRouter();
 const storeCart = cartStore();
@@ -112,8 +111,8 @@ const currentuser = null;
 const cart:any = computed(() => {
   return storeCart.cart;
 });
-const itemsId = {};
-cart.value.map(m => {
+const itemsId:any = {};
+cart.value.map((m:any) => {
   itemsId[m.id] = m.count
 })
 const orderData = ref({
@@ -127,18 +126,18 @@ const orderData = ref({
   items: itemsId
 });
 
-if(currentuser.value) {
-  for(let key in currentuser.value) {
-    if(Object.keys(orderData.value).indexOf(key) !== -1) {
-      orderData.value[key] = currentuser.value[key];
-    };
-  }
-}
+// if(currentuser.value) {
+//   for(let key in currentuser.value) {
+//     if(Object.keys(orderData.value).indexOf(key) !== -1) {
+//       orderData.value[key] = currentuser.value[key];
+//     };
+//   }
+// }
 
 const modal = ref(false);
 const getTotalPrice = ():string => {
   let total = 0;
-  cart.value.map((item:Item) => {
+  cart.value.map((item:any) => {
     total += item.price_retail * item.count;
   });
   const sum:number = total / 100;
@@ -167,11 +166,11 @@ const filterPostOffices = computed(() => {
   if(p.length === 0) {
     return [];
   } else {
-    return postOffices.value.filter(f => f[`Description${route.params.locale === 'uk' ? '': 'Ru'}`].indexOf(p.trim()) !== -1);
+    return postOffices.value.filter((f:any) => f[`Description${route.params.locale === 'uk' ? '': 'Ru'}`].indexOf(p.trim()) !== -1);
   }
 });
 
-const choisePost = (text) => {
+const choisePost = (text:string) => {
   orderData.value.post_office = text;
   isShowPostOffices.value = false;
 }
