@@ -17,9 +17,10 @@ import Filter from "@/components/app/filter.vue";
 import Item from "@/components/app/item.vue";
 // import { getAllData } from "@/stores/index";
 // const data = getAllData().content;
-const { data }:any = await useAsyncData(
-  'mainItems',
-  () => $fetch('/api/v1/items?limit=20')
-)
+const data = {items: []};
+// const { data }:any = await useAsyncData(
+//   'mainItems',
+//   () => $fetch('/api/v1/items?limit=20')
+// )
 
 </script>

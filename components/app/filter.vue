@@ -1,5 +1,5 @@
 <template>
-<div>
+<div v-if="categories.length > 0">
   <div class="px-2 pt-3">
     <h3 class="text-2xl text-slate-600 border-b-2 border-zinc-700">{{ $t('filter') }}</h3>
   </div>
@@ -75,17 +75,19 @@ const emits = defineEmits(['changeQuery'])
 const { refresh } = defineProps(['refresh']);
 const router = useRouter();
 const route = useRoute();
-const { data:filters } = await useFetch('/api/v1/filters');
-const { data:categories } = await useFetch('/api/v1/categories');
+const filters:any = ref([]);
+const categories:any = ref([]);
+// const { data:filters } = await useFetch('/api/v1/filters');
+// const { data:categories } = await useFetch('/api/v1/categories');
 const filterData = reactive({
   category: +route.params.category || null,
   subcategory: +route.params.subcategory || null,
-  model: +route.query.model || null,
-  make: +route.query.make || null,
-  supplier: +route.query.supplier || null
+  model: (route.query.model && +route.query.model) || null,
+  make: (route.query.make && +route.query.make) || null,
+  supplier: (route.query.supplier && +route.query.supplier) || null
 });
 const modelsList = computed(() => {
-  return filters.value.filter(f => f.parent_id === filterData.make);
+  return filters.value.filter((f:any) => f.parent_id === filterData.make);
 });
 
 const submitFilter = async () => {
@@ -100,6 +102,7 @@ const submitFilter = async () => {
   // await refresh({ dedupe: true });
 }
 </script>
+
 
 <style>
 @import url('@/public/app/style.css');

@@ -39,8 +39,8 @@ export default {
   }
 }
 </script>
-
 <style>
+
 html {
   line-height: 1;
 }
