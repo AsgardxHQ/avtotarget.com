@@ -1,11 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: false,
   nitro: {
-    prerender: {
-      crawlLinks: true
-    },
-    preset: 'digital-ocean'
+    preset: 'node-server'
   },
   build: {
     transpile: ['primevue']
