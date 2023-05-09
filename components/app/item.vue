@@ -68,8 +68,5 @@ const addToCart = (id:number) => {
   }, 2000);
   return;
 }
-const getImage = (path:string) => {
-  const img = new URL(`../../files/products/${path}`, import.meta.url);
-  return img;
-}
+
 </script>

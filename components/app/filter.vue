@@ -71,15 +71,11 @@
 </template>
 
 <script setup lang="ts">
-const emits = defineEmits(['changeQuery'])
-const { refresh } = defineProps(['refresh']);
+const emits = defineEmits(['changeQuery']);
+const { filters, categories } = defineProps(['filters', 'categories']);
 const router = useRouter();
 const route = useRoute();
-const filters:any = ref([]);
-const categories:any = ref([]);
-// const { data:filters } = await useFetch('/api/v1/filters');
-// const { data:categories } = await useFetch('/api/v1/categories');
-const filterData = reactive({
+const filterData:any = reactive({
   category: +route.params.category || null,
   subcategory: +route.params.subcategory || null,
   model: (route.query.model && +route.query.model) || null,
@@ -91,7 +87,7 @@ const modelsList = computed(() => {
 });
 
 const submitFilter = async () => {
-  let filters = {};
+  let filters:any = {};
   for(let f in filterData) {
     if(['category', 'subcategory'].indexOf(f) === -1 && filterData[f]) {
       filters[f] = filterData[f];
@@ -99,7 +95,6 @@ const submitFilter = async () => {
   }
   emits('changeQuery', filters);
   router.push({path: `/${route.params.locale}/${filterData.category}/${filterData.subcategory ? filterData.subcategory+'/' : ''}page-1`, query: filters});
-  // await refresh({ dedupe: true });
 }
 </script>
 
