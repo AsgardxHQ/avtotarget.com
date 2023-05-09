@@ -1,9 +1,9 @@
 <template>
   <div class="max-w-screen-xl mx-auto">
-    <Top />
+    <Top></Top>
     <NuxtLoadingBar :duration="3000" />
     <NuxtPage class="m-auto md:w-full md:px-4 md:w-full xl:max-w-5xl" />
-    <Footer />
+    <Footer></Footer>
   </div>
 </template>
 
