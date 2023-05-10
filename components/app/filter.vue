@@ -77,7 +77,6 @@ const router = useRouter();
 const route = useRoute();
 const categories:any = getAllData().categories;
 const filters:any = getAllData().filters;
-console.log(categories, filters);
 const filterData:any = reactive({
   category: +route.params.category || null,
   subcategory: +route.params.subcategory || null,
