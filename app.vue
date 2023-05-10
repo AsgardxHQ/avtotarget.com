@@ -12,10 +12,14 @@ import Top from "@/components/app/top.vue";
 import NuxtLoadingBar from "@/components/app/NuxtLoadingBar.vue";
 import Footer from "@/components/app/footer.vue";
 import { cartStore } from "@/stores/cart";
+import { getAllData } from "@/stores/index";
 
 export default {
   data() {
-    return {}
+    return {
+      categories: [],
+      filters: []
+    }
   },
   head () {
     return {
@@ -30,9 +34,8 @@ export default {
     Footer
   },
   created() {
-    if(!this.$route.params.locale) {
-      this.$router.replace('/uk');
-    }
+    getAllData().getFilters();
+    getAllData().getCategories();
   },
   mounted() {
     cartStore().initCart();

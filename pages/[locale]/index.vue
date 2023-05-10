@@ -1,7 +1,7 @@
 <template>
   <div>
     <Slider />
-    <Filter :categories="data.categories" :filters="data.filters" class="main-page" />
+    <Filter class="main-page" />
     <div class="v-full px-2 py-3">
       <h3 class="text-2xl text-slate-600 border-b-2 border-zinc-500">{{ $t('new_supply') }}</h3>
     </div>
@@ -19,6 +19,6 @@ import Item from "@/components/app/item.vue";
 // const data = getAllData().content;
 const { data }:any = await useAsyncData(
   'mainItems',
-  () => $fetch('/api/v1/get_main')
+  () => $fetch('/api/v1/items?limit=20')
 )
 </script>

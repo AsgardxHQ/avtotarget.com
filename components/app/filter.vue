@@ -71,10 +71,13 @@
 </template>
 
 <script setup lang="ts">
+import { getAllData } from "@/stores/index";
 const emits = defineEmits(['changeQuery']);
-const { filters, categories } = defineProps(['filters', 'categories']);
 const router = useRouter();
 const route = useRoute();
+const categories:any = getAllData().categories;
+const filters:any = getAllData().filters;
+console.log(categories, filters);
 const filterData:any = reactive({
   category: +route.params.category || null,
   subcategory: +route.params.subcategory || null,

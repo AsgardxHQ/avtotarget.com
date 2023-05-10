@@ -7,10 +7,12 @@ export const getAllData = defineStore({
       items: [],
       count_items: 0,
       firstLoad: true,
+      categories: <any>[],
+      filters: <any>[]
     }
   },
   actions: {
-    queryToString(query) {
+    queryToString(query:any) {
       let str = ""
       for(let key in query) {
         if(query[key]) {
@@ -19,7 +21,7 @@ export const getAllData = defineStore({
       }
       return str;
     },
-    setData(data) {
+    setData(data:any) {
       if(Object.keys(data).length > 0) {
         const {items, count} = data;
         this.count_items = count;
@@ -29,12 +31,12 @@ export const getAllData = defineStore({
         this.count_items = 0;
       }
     },
-    async filteringItems(query) {
+    async filteringItems(query:any) {
       const data = await $fetch(`/api/items?${this.queryToString(query)}`, { method: 'GET'});
       this.setData(data);
       return { items:this.items, count_items:this.count_items };
     },
-    async getItems(params, query):Promise<any> {
+    async getItems(params:any, query:any):Promise<any> {
       const {refresh, data } = await useAsyncData(
         'category',
         () => $fetch(`/api/v1/items?${this.queryToString(params)}&${this.queryToString(query)}`)
@@ -43,7 +45,7 @@ export const getAllData = defineStore({
       
       return data.value;
     },
-    async getItem(id) {
+    async getItem(id:number) {
       const {refresh, data } = await useAsyncData(
         'cart',
         () => $fetch(`/api/v1/${id}`, { method: 'GET'})
@@ -53,8 +55,22 @@ export const getAllData = defineStore({
       return data.value;
     },
     async getCategories() {
-      const { data } = await useFetch('/api/v1/categories');
-      return data.value;
+      const { data } = await useAsyncData(
+        'categories',
+        () => $fetch(`/api/v1/categories`, { method: 'GET'})
+      );
+      this.categories = data.value;
+    },
+    async getFilters() {
+      const { data } = await useAsyncData(
+        'filters',
+        () => $fetch(`/api/v1/filters`, { method: 'GET'})
+      );
+      this.filters = data.value;
+    },
+    async getFilterData() {
+      await this.getCategories();
+      await this.getFilters();
     }
   },
 })
