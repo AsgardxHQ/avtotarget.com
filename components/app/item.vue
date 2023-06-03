@@ -2,7 +2,7 @@
   <div 
     v-for="item in items"
     :key="item.id"
-    class="group m-2 relative"
+    class="item group m-2 relative"
   >
     <div class="
       transition ease-in-out
