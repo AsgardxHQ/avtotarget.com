@@ -49,16 +49,8 @@
   
   const getData = async (query = route.query) => {
     const { data, refresh }:any = await useFetch(`/api/v1/items?${queryToString(route.params)}${queryToString(query)}&limit=21`)
-    // await refresh({ dedupe: true })
     currentItems.value = data.value.items;
     pagination.value.count = +data.value.count;
   }
   await getData();
-  // if(categories.value.length === 0 && filters.value.length === 0) {
-  //   const { data:getCategories }:any = await useFetch(`/api/v1/categories`);
-  //   const { data:getFilters }:any = await useFetch(`/api/v1/filters`);
-  //   categories.value = getCategories.value;
-  //   filters.value = getFilters.value;
-  // }
-
 </script>

@@ -40,7 +40,7 @@
           </select>
         </label>
       </div>
-      <template v-if="filterData.make && modelsList.length > 0">
+      <template v-if="filterData.make">
         <div class="select-block px-2">
           <label>
             <span class="text-xs mb-1 block">Модель</span>
@@ -77,26 +77,27 @@ const router = useRouter();
 const route = useRoute();
 const categories:any = getAllData().categories;
 const filters:any = getAllData().filters;
-const filterData:any = reactive({
+const filterData:any = ref({
   category: +route.params.category || null,
   subcategory: +route.params.subcategory || null,
   model: (route.query.model && +route.query.model) || null,
   make: (route.query.make && +route.query.make) || null,
   supplier: (route.query.supplier && +route.query.supplier) || null
 });
-const modelsList = computed(() => {
-  return filters.value.filter((f:any) => f.parent_id === filterData.make);
-});
+
+// const modelsList = computed(() => {
+//   return filters.value.filter((f:any) => f.parent_id === filterData.value.make);
+// });
 
 const submitFilter = async () => {
   let filters:any = {};
-  for(let f in filterData) {
-    if(['category', 'subcategory'].indexOf(f) === -1 && filterData[f]) {
-      filters[f] = filterData[f];
+  for(let f in filterData.value) {
+    if(['category', 'subcategory'].indexOf(f) === -1 && filterData.value[f]) {
+      filters[f] = filterData.value[f];
     }
   }
   emits('changeQuery', filters);
-  router.push({path: `/${route.params.locale}/${filterData.category}/${filterData.subcategory ? filterData.subcategory+'/' : ''}page-1`, query: filters});
+  router.push({path: `/${route.params.locale}/${filterData.value.category}/${filterData.value.subcategory ? filterData.value.subcategory+'/' : ''}page-1`, query: filters});
 }
 </script>
 

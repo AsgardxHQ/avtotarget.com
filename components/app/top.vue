@@ -50,8 +50,9 @@
   import Cockpit from "@/components/cockpit/index.vue";
   const route = useRoute();
   const router = useRouter();
-  const currentuser = false;
-  const isAdmin = false;
+  const { logout } = useAuth();
+  const currentuser = useAuthUser();
+  const isAdmin = useAdmin();
   const isOpen = ref(false);
   const showModal = ref(false);
   const searchText = ref(route.params.request || '');
@@ -74,7 +75,7 @@
     isOpen.value = false;
   }
   const clikLogout = async () => {
-    // await logout()
+    await logout()
   }
 </script>
 

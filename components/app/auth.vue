@@ -59,6 +59,9 @@
 </template>
 
 <script lang="ts" setup>
+
+const { login, reg } = useAuth();
+
 const { openSignIn } = defineProps({
   openSignIn: {
     type: Function,
@@ -74,7 +77,7 @@ const error = ref({
   email: false,
   password: false,
   password_confirm: false,
-
+  msg: ''
 });
 const form = ref({
   email: '',
@@ -83,24 +86,31 @@ const form = ref({
 });
 
 const registration = async () => {
-  const reg = form.value;
-  if (reg.password === reg.password_confirm) {
-    const user = await useFetch('/api/auth/registration', { method: 'POST', body: reg });
-    if (!user.error) {
+  const regForm = form.value;
+  if (regForm.password === regForm.password_confirm) {
+    try {
+      await reg(regForm.email, regForm.password, regForm.password_confirm);
       openSignIn();
-    } else {
-      error.value.email = true;
+    } catch(err) {
+      console.log(err);
     }
+    // if (!user.error) {
+    //   openSignIn();
+    // } else {
+    //   error.value.email = true;
+    // }
   } else {
     error.value.password_confirm = true;
   }
 };
 const sign_in = async () => {
   const { email, password } = form.value;
-  const user = await useFetch('/api/v1/auth/sign_in', {method: 'POST', body: {email, password}});
-  if(user) {
-    openSignIn();
-  }
+  await login(email, password, true);
+  openSignIn();
+  // const user = await useFetch('/api/v1/auth/sign_in', {method: 'POST', body: {email, password}});
+  // if(user) {
+  //   openSignIn();
+  // }
 }
 
 </script>

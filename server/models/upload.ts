@@ -2,7 +2,7 @@ import multer from 'multer';
 import type { Options } from 'multer';
 import fs from 'fs';
 import { v4 } from 'uuid';
-import type { IServerResponse, FileType, ItemType } from 'types';
+import type { FileType, ItemType } from 'types';
 export const uploadService = () => {
 	let folderPath = './public/';
 	const { limits: templateLimits }: Options = {

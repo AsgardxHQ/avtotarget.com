@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 export default defineEventHandler(async (event) => {
-  const request:string = event.context.params.request;
+  const request:string = event.context.params!.request;
   const where:any = {
     OR: [
       {code_vendor: request},

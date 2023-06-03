@@ -7,7 +7,6 @@ export default defineEventHandler(async (event) => {
   if(user.length > 0) {
     const u = user[0];
     delete u.password;
-    useCookie('auth', u);
     return true;
   } else {
     return false;
