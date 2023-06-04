@@ -38,7 +38,7 @@
         </ul>
       </div>
       <div class="flex items-center">
-        <span class="block w-1/2 px-2 text-slate-600 text-sm font-bold whitespace-nowrap">{{item.price_retail / 100}} грн.</span>
+        <span class="block w-1/2 px-2 text-slate-600 text-sm font-bold whitespace-nowrap">{{$toPrice(item.price_retail)}} грн.</span>
         <button 
           type="button" 
           class="w-1/2 text-sky-900 bg-inherit group-hover:bg-cyan-700 group-hover:text-sky-100 py-2 rounded-br-md"

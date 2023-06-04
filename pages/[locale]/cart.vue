@@ -23,9 +23,9 @@
                   </template> -->
                 </ul>
                 <ul class="text-xs">
-                  <li><span class="font-bold">{{$t('items.price')}}: </span>{{item.price_retail / 100}} грн.</li>
+                  <li><span class="font-bold">{{$t('items.price')}}: </span>{{$toPrice(item.price_retail)}} грн.</li>
                   <li><span class="font-bold">{{$t('count_items')}}: </span>{{item.count}} шт.</li>
-                  <li><span class="font-bold">{{$t('items.total_item')}}: </span> {{ (item.price_retail / 100) * item.count }} грн.</li>
+                  <li><span class="font-bold">{{$t('items.total_item')}}: </span> {{$toPrice(item.price_retail, item.count) }} грн.</li>
                 </ul>
               </div>
             </div>
