@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 export default defineEventHandler(async (event) => {
-  const data:any = await useBody(event);
+  const data:any = await readBody(event);
   return new Promise(async (resolve, reject) => {
     try {
       const id = data.id;

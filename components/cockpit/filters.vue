@@ -132,7 +132,7 @@
     'Удален',
     'Активен'
   ]
-  const save = (payload) => {
+  const save = (payload:any) => {
     console.log(payload);
   }
   const create = async (payload:any) => {

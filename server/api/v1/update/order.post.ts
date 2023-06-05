@@ -7,13 +7,13 @@ export default defineEventHandler(async (event) => {
     try {
       const id = data.id;
       delete data.id;
-      const item = await prisma.items.update({
+      const order = await prisma.orders.update({
         where: {
           id: id
         },
         data: data
       });
-      resolve(item); 
+      resolve(order); 
     } catch(err) {
       console.log(err);
       reject(err);
